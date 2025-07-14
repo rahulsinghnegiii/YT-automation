@@ -1,0 +1,64 @@
+2025-06-26 23:12:18 - ai_music_uploader - INFO - setup_logging:79 - Advanced logging system initialized
+2025-06-26 23:17:19 - ai_music_uploader - INFO - setup_logging:79 - Advanced logging system initialized
+2025-06-26 23:17:19 - ai_music_uploader - INFO - info:248 - Initializing AI Music Uploader Admin Panel...
+2025-06-26 23:17:19 - ai_music_uploader - INFO - info:248 - File manager initialized
+2025-06-26 23:17:19 - ai_music_uploader - INFO - info:248 - System monitor initialized
+2025-06-26 23:17:19 - ai_music_uploader - INFO - info:248 - Task scheduler initialized
+2025-06-26 23:17:19 - ai_music_uploader - INFO - info:248 - Semantic enrichment initialized
+2025-06-26 23:17:19 - ai_music_uploader - INFO - info:248 - Asset harvester initialized
+2025-06-26 23:17:19 - ai_music_uploader - INFO - info:248 - Signal morphology initialized
+2025-06-26 23:17:19 - ai_music_uploader - INFO - info:248 - Scheduler started
+2025-06-26 23:17:19 - ai_music_uploader - INFO - info:248 - All components initialized successfully
+2025-06-26 23:31:02 - ai_music_uploader - INFO - info:248 - Application shutting down
+2025-06-26 23:31:02 - ai_music_uploader - INFO - info:248 - Application shutting down
+2025-06-26 23:47:45 - ai_music_uploader - INFO - setup_logging:79 - Advanced logging system initialized
+2025-06-26 23:47:45 - ai_music_uploader - INFO - info:248 - Initializing AI Music Uploader Admin Panel...
+2025-06-26 23:47:45 - ai_music_uploader - INFO - info:248 - File manager initialized
+2025-06-26 23:47:45 - ai_music_uploader - INFO - info:248 - System monitor initialized
+2025-06-26 23:47:45 - ai_music_uploader - INFO - info:248 - Task scheduler initialized
+2025-06-26 23:47:45 - ai_music_uploader - INFO - info:248 - Semantic enrichment initialized
+2025-06-26 23:47:45 - ai_music_uploader - INFO - info:248 - Asset harvester initialized
+2025-06-26 23:47:45 - ai_music_uploader - INFO - info:248 - Signal morphology initialized
+2025-06-26 23:47:45 - ai_music_uploader - INFO - info:248 - Scheduler started
+2025-06-26 23:47:45 - ai_music_uploader - INFO - info:248 - All components initialized successfully
+2025-06-26 23:48:02 - ai_music_uploader - ERROR - error:260 - Dashboard error: Could not build url for endpoint 'batch'. Did you mean 'static' instead?
+2025-06-26 23:49:28 - ai_music_uploader - INFO - info:248 - Application shutting down
+2025-06-26 23:49:28 - ai_music_uploader - INFO - info:248 - Application shutting down
+2025-06-26 23:50:47 - ai_music_uploader - INFO - setup_logging:79 - Advanced logging system initialized
+2025-06-26 23:50:47 - ai_music_uploader - INFO - info:248 - Initializing AI Music Uploader Admin Panel...
+2025-06-26 23:50:47 - ai_music_uploader - INFO - info:248 - File manager initialized
+2025-06-26 23:50:47 - ai_music_uploader - INFO - info:248 - System monitor initialized
+2025-06-26 23:50:47 - ai_music_uploader - INFO - info:248 - Task scheduler initialized
+2025-06-26 23:50:47 - ai_music_uploader - INFO - info:248 - Semantic enrichment initialized
+2025-06-26 23:50:47 - ai_music_uploader - INFO - info:248 - Asset harvester initialized
+2025-06-26 23:50:47 - ai_music_uploader - INFO - info:248 - Signal morphology initialized
+2025-06-26 23:50:47 - ai_music_uploader - INFO - info:248 - Scheduler started
+2025-06-26 23:50:48 - ai_music_uploader - INFO - info:248 - All components initialized successfully
+2025-06-26 23:50:52 - ai_music_uploader - ERROR - error:260 - Dashboard error: 'moment' is undefined
+2025-06-26 23:51:41 - ai_music_uploader - INFO - info:248 - Application shutting down
+2025-06-26 23:51:41 - ai_music_uploader - INFO - info:248 - Application shutting down
+2025-06-26 23:56:02 - ai_music_uploader - INFO - setup_logging:79 - Advanced logging system initialized
+2025-06-26 23:56:02 - ai_music_uploader - INFO - info:248 - Initializing AI Music Uploader Admin Panel...
+2025-06-26 23:56:02 - ai_music_uploader - INFO - info:248 - File manager initialized
+2025-06-26 23:56:02 - ai_music_uploader - INFO - info:248 - System monitor initialized
+2025-06-26 23:56:02 - ai_music_uploader - INFO - info:248 - Task scheduler initialized
+2025-06-26 23:56:02 - ai_music_uploader - INFO - info:248 - Semantic enrichment initialized
+2025-06-26 23:56:02 - ai_music_uploader - INFO - info:248 - Asset harvester initialized
+2025-06-26 23:56:02 - ai_music_uploader - INFO - info:248 - Signal morphology initialized
+2025-06-26 23:56:02 - ai_music_uploader - INFO - info:248 - Scheduler started
+2025-06-26 23:56:02 - ai_music_uploader - INFO - info:248 - All components initialized successfully
+2025-06-27 00:01:15 - ai_music_uploader - INFO - info:248 - Application shutting down
+2025-06-27 00:01:15 - ai_music_uploader - INFO - info:248 - Application shutting down
+2025-06-27 00:01:51 - ai_music_uploader - INFO - setup_logging:79 - Advanced logging system initialized
+2025-06-27 00:01:51 - ai_music_uploader - INFO - info:248 - Initializing AI Music Uploader Admin Panel...
+2025-06-27 00:01:51 - ai_music_uploader - INFO - info:248 - File manager initialized
+2025-06-27 00:01:51 - ai_music_uploader - INFO - info:248 - System monitor initialized
+2025-06-27 00:01:51 - ai_music_uploader - INFO - info:248 - Task scheduler initialized
+2025-06-27 00:01:51 - ai_music_uploader - INFO - info:248 - Semantic enrichment initialized
+2025-06-27 00:01:51 - ai_music_uploader - INFO - info:248 - Asset harvester initialized
+2025-06-27 00:01:51 - ai_music_uploader - INFO - info:248 - Signal morphology initialized
+2025-06-27 00:01:51 - ai_music_uploader - INFO - info:248 - Scheduler started
+2025-06-27 00:01:51 - ai_music_uploader - INFO - info:248 - All components initialized successfully
+2025-06-27 00:02:18 - ai_music_uploader - ERROR - error:260 - Status page error: 'stats' is undefined
+2025-06-27 00:14:06 - ai_music_uploader - INFO - info:248 - Application shutting down
+2025-06-27 00:14:06 - ai_music_uploader - INFO - info:248 - Application shutting down

@@ -1,0 +1,36 @@
+{"level":"info","message":"🔄 Starting scheduled asset harvest...","timestamp":"2025-07-11 00:00:00"}
+{"errors":[{"instance":{"createdAt":"2025-07-11T00:00:00.280Z","id":null,"progress":0,"startedAt":"2025-07-11T00:00:00.279Z","status":"running","type":"download","updatedAt":"2025-07-11T00:00:00.280Z"},"message":"ProcessingJob.assetId cannot be null","origin":"CORE","path":"assetId","type":"notNull Violation","validatorArgs":[],"validatorKey":"is_null","validatorName":null,"value":null}],"level":"error","message":"❌ Scheduled asset harvest failed: notNull Violation: ProcessingJob.assetId cannot be null","name":"SequelizeValidationError","stack":"SequelizeValidationError: notNull Violation: ProcessingJob.assetId cannot be null\n    at InstanceValidator._validate (/home/app/node_modules/sequelize/lib/instance-validator.js:50:13)\n    at processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at runNextTicks (node:internal/process/task_queues:64:3)\n    at listOnTimeout (node:internal/timers:538:9)\n    at process.processTimers (node:internal/timers:512:7)\n    at async InstanceValidator._validateAndRunHooks (/home/app/node_modules/sequelize/lib/instance-validator.js:60:7)\n    at async InstanceValidator.validate (/home/app/node_modules/sequelize/lib/instance-validator.js:54:12)\n    at async model.save (/home/app/node_modules/sequelize/lib/model.js:2426:7)\n    at async ProcessingJob.create (/home/app/node_modules/sequelize/lib/model.js:1362:12)\n    at async TaskScheduler.executeHarvestCycle (/home/app/server/services/scheduler.js:138:17)","timestamp":"2025-07-11 00:00:00"}
+{"level":"info","message":"🔄 Starting scheduled processing cycle...","timestamp":"2025-07-11 00:00:00"}
+{"level":"info","message":"OpenAI client initialized for semantic enrichment","timestamp":"2025-07-11 00:00:00"}
+{"level":"info","message":"🔄 Starting scheduled upload cycle...","timestamp":"2025-07-11 00:00:00"}
+{"level":"info","message":"✅ Scheduled processing cycle completed","timestamp":"2025-07-11 00:00:00"}
+{"level":"info","message":"✅ Scheduled upload cycle completed","timestamp":"2025-07-11 00:00:00"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-11 00:00:16"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-11 00:00:16"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-11 00:00:16"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-11 00:00:17"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-11 00:00:17"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-11 00:00:17"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-11 00:00:17"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-11 00:00:17"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-11 00:00:17"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-11 00:00:17"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-11 00:00:54"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-11 00:00:54"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-11 00:00:54"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-11 00:00:54"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-11 00:00:54"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-11 00:00:54"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-11 00:00:54"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-11 00:00:54"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-11 00:00:54"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-11 00:00:54"}
+{"level":"info","message":"User admin logged in successfully from ::1","timestamp":"2025-07-11 00:01:48"}
+{"level":"info","message":"User admin logged in successfully from ::1","timestamp":"2025-07-11 00:02:01"}
+{"level":"info","message":"🔄 Starting scheduled processing cycle...","timestamp":"2025-07-11 02:00:00"}
+{"level":"info","message":"OpenAI client initialized for semantic enrichment","timestamp":"2025-07-11 02:00:00"}
+{"level":"info","message":"✅ Scheduled processing cycle completed","timestamp":"2025-07-11 02:00:00"}
+{"level":"info","message":"🔄 Starting scheduled maintenance...","timestamp":"2025-07-11 03:00:00"}
+{"level":"info","message":"🧹 Starting system maintenance...","timestamp":"2025-07-11 03:00:00"}
+{"level":"info","message":"✅ System maintenance completed","timestamp":"2025-07-11 03:00:00"}
+{"level":"info","message":"✅ Scheduled maintenance completed","timestamp":"2025-07-11 03:00:00"}

@@ -1,0 +1,102 @@
+version: '3.8'
+
+# Development Docker Compose configuration
+# This version includes development tools and hot-reloading
+
+services:
+  ai-music-uploader-dev:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      target: base
+    container_name: ai-music-uploader-dev
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+      - "9229:9229"  # Node.js debugger port
+    environment:
+      - NODE_ENV=development
+      - DEBUG=*
+      
+      # Development API keys (use your own)
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - YOUTUBE_API_KEY=${YOUTUBE_API_KEY:-}
+      - YOUTUBE_CLIENT_ID=${YOUTUBE_CLIENT_ID:-}
+      - YOUTUBE_CLIENT_SECRET=${YOUTUBE_CLIENT_SECRET:-}
+      
+      # Admin Panel Security
+      - ADMIN_USERNAME=admin
+      - ADMIN_PASSWORD=admin123456
+      - JWT_SECRET=dev_secret_key
+      
+      # File Paths
+      - DOWNLOAD_PATH=/app/downloads
+      - PROCESSED_PATH=/app/processed
+      - UPLOADS_PATH=/app/uploads
+      - TEMP_PATH=/app/temp
+      
+      # Database
+      - DATABASE_URL=sqlite:/app/data/music_uploader.db
+      
+    volumes:
+      # Mount source code for hot-reloading
+      - ./server:/app/server
+      - ./client/src:/app/client/src
+      - ./client/public:/app/client/public
+      
+      # Data persistence
+      - ai_music_dev_data:/app/data
+      - ai_music_dev_logs:/app/logs
+      - ai_music_dev_uploads:/app/uploads
+      - ai_music_dev_downloads:/app/downloads
+      - ai_music_dev_processed:/app/processed
+      - ai_music_dev_temp:/app/temp
+    
+    command: npm run dev
+    restart: unless-stopped
+    networks:
+      - ai-music-dev-network
+
+  # Development database viewer
+  adminer:
+    image: adminer
+    container_name: ai-music-adminer
+    ports:
+      - "8080:8080"
+    environment:
+      - ADMINER_DEFAULT_SERVER=ai-music-uploader-dev
+    depends_on:
+      - ai-music-uploader-dev
+    networks:
+      - ai-music-dev-network
+
+  # Development Redis for testing
+  redis-dev:
+    image: redis:7-alpine
+    container_name: ai-music-redis-dev
+    ports:
+      - "6379:6379"
+    volumes:
+      - ai_music_dev_redis:/data
+    networks:
+      - ai-music-dev-network
+
+volumes:
+  ai_music_dev_data:
+    driver: local
+  ai_music_dev_logs:
+    driver: local
+  ai_music_dev_uploads:
+    driver: local
+  ai_music_dev_downloads:
+    driver: local
+  ai_music_dev_processed:
+    driver: local
+  ai_music_dev_temp:
+    driver: local
+  ai_music_dev_redis:
+    driver: local
+
+networks:
+  ai-music-dev-network:
+    driver: bridge

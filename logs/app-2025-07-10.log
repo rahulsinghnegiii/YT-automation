@@ -1,0 +1,54 @@
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-10 23:38:34"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-10 23:38:34"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-10 23:38:34"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-10 23:38:34"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-10 23:38:34"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-10 23:38:34"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-10 23:38:34"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-10 23:38:34"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-10 23:38:34"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-10 23:38:34"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-10 23:43:18"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-10 23:43:18"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-10 23:43:18"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-10 23:43:18"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-10 23:43:18"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-10 23:43:18"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-10 23:43:18"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-10 23:43:18"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-10 23:43:18"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-10 23:43:18"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-10 23:45:29"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-10 23:45:29"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-10 23:45:29"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-10 23:45:29"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-10 23:45:29"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-10 23:45:29"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-10 23:45:29"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-10 23:45:29"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-10 23:45:29"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-10 23:45:29"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-10 23:47:24"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-10 23:47:24"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-10 23:47:24"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-10 23:47:24"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-10 23:47:24"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-10 23:47:24"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-10 23:47:24"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-10 23:47:24"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-10 23:47:24"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-10 23:47:24"}
+{"level":"info","message":"User admin logged in successfully from ::ffff:127.0.0.1","timestamp":"2025-07-10 23:47:52"}
+{"level":"error","message":"❌ Failed to save metrics to database: SQLITE_READONLY: attempt to write a readonly database","name":"SequelizeDatabaseError","original":{"code":"SQLITE_READONLY","errno":8,"sql":"INSERT INTO `system_metrics` (`id`,`timestamp`,`cpu_percent`,`memory_percent`,`disk_percent`,`network_bytes_in`,`network_bytes_out`,`active_processes`,`uptime`,`created_at`,`updated_at`) VALUES (NULL,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10);"},"parameters":{},"parent":{"code":"SQLITE_READONLY","errno":8,"sql":"INSERT INTO `system_metrics` (`id`,`timestamp`,`cpu_percent`,`memory_percent`,`disk_percent`,`network_bytes_in`,`network_bytes_out`,`active_processes`,`uptime`,`created_at`,`updated_at`) VALUES (NULL,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10);"},"sql":"INSERT INTO `system_metrics` (`id`,`timestamp`,`cpu_percent`,`memory_percent`,`disk_percent`,`network_bytes_in`,`network_bytes_out`,`active_processes`,`uptime`,`created_at`,`updated_at`) VALUES (NULL,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10);","stack":"Error\n    at Database.<anonymous> (/home/app/node_modules/sequelize/lib/dialects/sqlite/query.js:185:27)\n    at /home/app/node_modules/sequelize/lib/dialects/sqlite/query.js:183:50\n    at new Promise (<anonymous>)\n    at Query.run (/home/app/node_modules/sequelize/lib/dialects/sqlite/query.js:183:12)\n    at /home/app/node_modules/sequelize/lib/sequelize.js:315:28\n    at async SQLiteQueryInterface.insert (/home/app/node_modules/sequelize/lib/dialects/abstract/query-interface.js:308:21)\n    at async model.save (/home/app/node_modules/sequelize/lib/model.js:2490:35)\n    at async SystemMetric.create (/home/app/node_modules/sequelize/lib/model.js:1362:12)\n    at async SystemMonitor.saveMetrics (/home/app/server/services/monitoring.js:107:7)\n    at async Timeout._onTimeout (/home/app/server/services/monitoring.js:40:11)","timestamp":"2025-07-10 23:55:24"}
+{"level":"error","message":"❌ Failed to save metrics to database: SQLITE_READONLY: attempt to write a readonly database","name":"SequelizeDatabaseError","original":{"code":"SQLITE_READONLY","errno":8,"sql":"INSERT INTO `system_metrics` (`id`,`timestamp`,`cpu_percent`,`memory_percent`,`disk_percent`,`network_bytes_in`,`network_bytes_out`,`active_processes`,`uptime`,`created_at`,`updated_at`) VALUES (NULL,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10);"},"parameters":{},"parent":{"code":"SQLITE_READONLY","errno":8,"sql":"INSERT INTO `system_metrics` (`id`,`timestamp`,`cpu_percent`,`memory_percent`,`disk_percent`,`network_bytes_in`,`network_bytes_out`,`active_processes`,`uptime`,`created_at`,`updated_at`) VALUES (NULL,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10);"},"sql":"INSERT INTO `system_metrics` (`id`,`timestamp`,`cpu_percent`,`memory_percent`,`disk_percent`,`network_bytes_in`,`network_bytes_out`,`active_processes`,`uptime`,`created_at`,`updated_at`) VALUES (NULL,$1,$2,$3,$4,$5,$6,$7,$8,$9,$10);","stack":"Error\n    at Database.<anonymous> (/home/app/node_modules/sequelize/lib/dialects/sqlite/query.js:185:27)\n    at /home/app/node_modules/sequelize/lib/dialects/sqlite/query.js:183:50\n    at new Promise (<anonymous>)\n    at Query.run (/home/app/node_modules/sequelize/lib/dialects/sqlite/query.js:183:12)\n    at /home/app/node_modules/sequelize/lib/sequelize.js:315:28\n    at async SQLiteQueryInterface.insert (/home/app/node_modules/sequelize/lib/dialects/abstract/query-interface.js:308:21)\n    at async model.save (/home/app/node_modules/sequelize/lib/model.js:2490:35)\n    at async SystemMetric.create (/home/app/node_modules/sequelize/lib/model.js:1362:12)\n    at async SystemMonitor.saveMetrics (/home/app/server/services/monitoring.js:107:7)\n    at async Timeout._onTimeout (/home/app/server/services/monitoring.js:40:11)","timestamp":"2025-07-10 23:56:24"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-10 23:57:28"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-10 23:57:28"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-10 23:57:28"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-10 23:57:28"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-10 23:57:28"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-10 23:57:28"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-10 23:57:28"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-10 23:57:28"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-10 23:57:28"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-10 23:57:28"}
+{"level":"info","message":"User admin logged in successfully from ::ffff:127.0.0.1","timestamp":"2025-07-10 23:57:42"}

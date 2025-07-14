@@ -1,0 +1,125 @@
+version: '3.8'
+
+services:
+  ai-music-uploader:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: ai-music-uploader
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      
+      # OpenAI Configuration
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-your_openai_api_key}
+      - OPENAI_MODEL=gpt-4
+      
+      # YouTube API Configuration
+      - YOUTUBE_API_KEY=${YOUTUBE_API_KEY:-your_youtube_api_key}
+      - YOUTUBE_CLIENT_ID=${YOUTUBE_CLIENT_ID:-your_youtube_client_id}
+      - YOUTUBE_CLIENT_SECRET=${YOUTUBE_CLIENT_SECRET:-your_youtube_client_secret}
+      - YOUTUBE_REDIRECT_URI=http://localhost:3000/auth/youtube/callback
+      
+      # Admin Panel Security
+      - ADMIN_USERNAME=admin
+      - ADMIN_PASSWORD=admin123456
+      - JWT_SECRET=music_uploader_jwt_secret_2025
+      
+      # File Paths
+      - DOWNLOAD_PATH=/app/downloads
+      - PROCESSED_PATH=/app/processed
+      - UPLOADS_PATH=/app/uploads
+      - TEMP_PATH=/app/temp
+      
+      # Temporal Logic
+      - HARVEST_INTERVAL_HOURS=6
+      - PROCESSING_INTERVAL_HOURS=2
+      - UPLOAD_INTERVAL_HOURS=8
+      - METADATA_REFRESH_DAYS=30
+      
+      # Social Echo Chamber
+      - MAX_INTERACTIONS_PER_HOUR=10
+      - COMMENT_RESPONSE_RATE=0.3
+      
+      # Database
+      - DATABASE_URL=sqlite:/app/data/music_uploader.db
+      
+      # Notifications (Optional)
+      - NOTIFICATIONS_ENABLED=false
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN:-}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID:-}
+      - EMAIL_SMTP_SERVER=smtp.gmail.com
+      - EMAIL_SMTP_PORT=587
+      - EMAIL_USERNAME=${EMAIL_USERNAME:-}
+      - EMAIL_PASSWORD=${EMAIL_PASSWORD:-}
+      - EMAIL_RECIPIENT=${EMAIL_RECIPIENT:-}
+      
+    volumes:
+      - ai_music_data:/app/data
+      - ai_music_logs:/app/logs
+      - ai_music_uploads:/app/uploads
+      - ai_music_downloads:/app/downloads
+      - ai_music_processed:/app/processed
+      - ai_music_temp:/app/temp
+      - ai_music_overlays:/app/overlays
+      - ai_music_credentials:/app/credentials
+    
+    restart: unless-stopped
+    
+    networks:
+      - ai-music-network
+
+  # Optional: Redis for caching and session management
+  redis:
+    image: redis:7-alpine
+    container_name: ai-music-redis
+    restart: unless-stopped
+    networks:
+      - ai-music-network
+    volumes:
+      - ai_music_redis:/data
+
+  # Optional: Nginx reverse proxy
+  nginx:
+    image: nginx:alpine
+    container_name: ai-music-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ai_music_ssl:/etc/nginx/ssl
+    depends_on:
+      - ai-music-uploader
+    restart: unless-stopped
+    networks:
+      - ai-music-network
+
+volumes:
+  ai_music_data:
+    driver: local
+  ai_music_logs:
+    driver: local
+  ai_music_uploads:
+    driver: local
+  ai_music_downloads:
+    driver: local
+  ai_music_processed:
+    driver: local
+  ai_music_temp:
+    driver: local
+  ai_music_overlays:
+    driver: local
+  ai_music_credentials:
+    driver: local
+  ai_music_redis:
+    driver: local
+  ai_music_ssl:
+    driver: local
+
+networks:
+  ai-music-network:
+    driver: bridge

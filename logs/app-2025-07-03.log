@@ -1,0 +1,482 @@
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 00:43:41"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 00:43:41"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 00:43:41"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 00:43:41"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 00:43:41"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 00:43:41"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 00:43:41"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 00:43:41"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 00:43:41"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 00:43:41"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 00:50:28"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 00:50:28"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 00:50:28"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 00:50:28"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 00:50:28"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 00:50:28"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 00:50:28"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 00:50:28"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 00:50:28"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 00:50:28"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 00:50:37"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 00:50:37"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 00:50:37"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 00:50:37"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 00:50:37"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 00:50:37"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 00:50:37"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 00:50:37"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 00:50:37"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 00:50:37"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 00:51:22"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 00:51:22"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 00:51:22"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 00:51:22"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 00:51:22"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 00:51:22"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 00:51:22"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 00:51:22"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 00:51:22"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 00:51:22"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 00:51:32"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 00:51:32"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 00:51:32"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 00:51:32"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 00:51:32"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 00:51:32"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 00:51:32"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 00:51:32"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 00:51:32"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 00:51:32"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 00:51:42"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 00:51:42"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 00:51:42"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 00:51:42"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 00:51:42"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 00:51:42"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 00:51:42"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 00:51:42"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 00:51:42"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 00:51:42"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 00:51:52"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 00:51:52"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 00:51:52"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 00:51:52"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 00:51:52"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 00:51:52"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 00:51:52"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 00:51:52"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 00:51:52"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 00:51:52"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 00:52:33"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 00:52:33"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 00:52:33"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 00:52:33"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 00:52:33"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 00:52:33"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 00:52:33"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 00:52:33"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 00:52:33"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 00:52:33"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 00:58:38"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 00:58:38"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 00:58:38"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 00:58:38"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 00:58:38"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 00:58:38"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 00:58:38"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 00:58:38"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 00:58:38"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 00:58:38"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 00:59:08"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 00:59:08"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 00:59:08"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 00:59:08"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 00:59:08"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 00:59:08"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 00:59:08"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 00:59:08"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 00:59:08"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 00:59:08"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 00:59:38"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 00:59:38"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 00:59:38"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 00:59:38"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 00:59:38"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 00:59:38"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 00:59:38"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 00:59:38"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 00:59:38"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 00:59:38"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 01:00:03"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 01:00:03"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 01:00:03"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 01:00:03"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 01:00:03"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 01:00:03"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 01:00:03"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 01:00:03"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 01:00:03"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 01:00:03"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 01:01:10"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 01:01:10"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 01:01:10"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 01:01:10"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 01:01:10"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 01:01:10"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 01:01:10"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 01:01:10"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 01:01:10"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 01:01:10"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 01:03:37"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 01:03:37"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 01:03:37"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 01:03:37"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 01:03:37"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 01:03:37"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 01:03:37"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 01:03:37"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 01:03:37"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 01:03:37"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 01:03:52"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 01:03:52"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 01:03:52"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 01:03:52"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 01:03:52"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 01:03:52"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 01:03:52"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 01:03:52"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 01:03:52"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 01:03:52"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 01:04:03"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 01:04:03"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 01:04:03"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 01:04:03"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 01:04:03"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 01:04:03"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 01:04:03"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 01:04:03"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 01:04:03"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 01:04:03"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 01:05:37"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 01:05:37"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 01:05:37"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 01:05:37"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 01:05:37"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 01:05:37"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 01:05:37"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 01:05:37"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 01:05:37"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 01:05:37"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 01:06:37"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 01:06:37"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 01:06:37"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 01:06:37"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 01:06:37"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 01:06:37"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 01:06:37"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 01:06:37"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 01:06:37"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 01:06:37"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 01:07:04"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 01:07:04"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 01:07:04"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 01:07:04"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 01:07:04"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 01:07:04"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 01:07:04"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 01:07:04"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 01:07:04"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 01:07:04"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 01:07:18"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 01:07:18"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 01:07:18"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 01:07:18"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 01:07:18"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 01:07:18"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 01:07:18"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 01:07:18"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 01:07:18"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 01:07:18"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 01:07:39"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 01:07:39"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 01:07:39"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 01:07:39"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 01:07:39"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 01:07:39"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 01:07:39"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 01:07:39"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 01:07:39"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 01:07:39"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 01:07:51"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 01:07:51"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 01:07:51"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 01:07:51"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 01:07:51"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 01:07:51"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 01:07:51"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 01:07:51"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 01:07:51"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 01:07:51"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 01:08:36"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 01:08:37"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 01:08:37"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 01:08:37"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 01:08:37"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 01:08:37"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 01:08:37"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 01:08:37"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 01:08:37"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 01:08:37"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 01:08:51"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 01:08:51"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 01:08:51"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 01:08:51"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 01:08:51"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 01:08:51"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 01:08:51"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 01:08:51"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 01:08:51"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 01:08:51"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 01:12:24"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 01:12:24"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 01:12:24"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 01:12:24"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 01:12:24"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 01:12:24"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 01:12:24"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 01:12:24"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 01:12:24"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 01:12:24"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 01:25:07"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 01:25:07"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 01:25:07"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 01:25:07"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 01:25:07"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 01:25:07"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 01:25:07"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 01:25:07"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 01:25:07"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 01:25:07"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 01:30:53"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 01:30:53"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 01:30:53"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 01:30:53"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 01:30:53"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 01:30:53"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 01:30:53"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 01:30:53"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 01:30:53"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 01:30:53"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 01:32:22"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 01:32:22"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 01:32:22"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 01:32:22"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 01:32:22"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 01:32:22"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 01:32:22"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 01:32:22"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 01:32:22"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 01:32:22"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 01:32:35"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 01:32:35"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 01:32:35"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 01:32:35"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 01:32:35"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 01:32:35"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 01:32:35"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 01:32:35"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 01:32:35"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 01:32:35"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 01:33:24"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 01:33:24"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 01:33:24"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 01:33:24"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 01:33:24"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 01:33:24"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 01:33:24"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 01:33:24"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 01:33:24"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 01:33:24"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 01:35:53"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 01:35:53"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 01:35:53"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 01:35:53"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 01:35:53"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 01:35:53"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 01:35:53"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 01:35:53"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 01:35:53"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 01:35:53"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 01:37:11"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 01:37:11"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 01:37:11"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 01:37:11"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 01:37:11"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 01:37:11"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 01:37:11"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 01:37:11"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 01:37:11"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 01:37:11"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 01:40:06"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 01:40:06"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 01:40:06"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 01:40:06"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 01:40:06"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 01:40:06"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 01:40:06"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 01:40:06"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 01:40:06"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 01:40:06"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 01:44:50"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 01:44:50"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 01:44:50"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 01:44:50"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 01:44:50"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 01:44:50"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 01:44:50"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 01:44:50"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 01:44:50"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 01:44:50"}
+{"level":"info","message":"User admin logged in successfully from ::1","timestamp":"2025-07-03 01:45:37"}
+{"level":"info","message":"📡 Client connected: bSlMPYVBKUnSh-0HAAAB","timestamp":"2025-07-03 01:45:37"}
+{"level":"info","message":"📡 Client disconnected: bSlMPYVBKUnSh-0HAAAB","timestamp":"2025-07-03 01:45:43"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 01:59:01"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 01:59:01"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 01:59:01"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 01:59:01"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 01:59:01"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 01:59:01"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 01:59:01"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 01:59:01"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 01:59:01"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 01:59:01"}
+{"level":"info","message":"User admin logged in successfully from ::1","timestamp":"2025-07-03 01:59:45"}
+{"level":"info","message":"📡 Client connected: xO8Xs_X7FNCsRgkmAAAB","timestamp":"2025-07-03 01:59:46"}
+{"level":"info","message":"📡 Client disconnected: xO8Xs_X7FNCsRgkmAAAB","timestamp":"2025-07-03 01:59:46"}
+{"level":"info","message":"🔄 Starting scheduled processing cycle...","timestamp":"2025-07-03 02:00:00"}
+{"level":"info","message":"OpenAI client initialized for semantic enrichment","timestamp":"2025-07-03 02:00:00"}
+{"level":"info","message":"✅ Scheduled processing cycle completed","timestamp":"2025-07-03 02:00:00"}
+{"level":"info","message":"📡 Client connected: r5K85ZYUcJiSwknsAAAF","timestamp":"2025-07-03 02:05:45"}
+{"level":"info","message":"📡 Client disconnected: r5K85ZYUcJiSwknsAAAF","timestamp":"2025-07-03 02:12:16"}
+{"level":"info","message":"📡 Client connected: JVuzFgFL3EcCb2WSAAAI","timestamp":"2025-07-03 02:12:35"}
+{"level":"info","message":"📡 Client disconnected: JVuzFgFL3EcCb2WSAAAI","timestamp":"2025-07-03 02:13:03"}
+{"level":"info","message":"📡 Client connected: x1s1W-0FaCBf-bElAAAK","timestamp":"2025-07-03 02:13:05"}
+{"level":"info","message":"📡 Client disconnected: x1s1W-0FaCBf-bElAAAK","timestamp":"2025-07-03 02:13:29"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 02:23:48"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 02:23:48"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 02:23:48"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 02:23:48"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 02:23:48"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 02:23:48"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 02:23:48"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 02:23:48"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 02:23:48"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 02:23:48"}
+{"level":"info","message":"📡 Client connected: -YQ17qsUXFla9lTkAAAC","timestamp":"2025-07-03 02:24:01"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 02:30:39"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 02:30:39"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 02:30:39"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 02:30:39"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 02:30:39"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 02:30:39"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 02:30:39"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 02:30:39"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 02:30:39"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 02:30:39"}
+{"level":"info","message":"📡 Client connected: 00GRs4DShNsA96HDAAAB","timestamp":"2025-07-03 02:30:39"}
+{"level":"info","message":"📡 Client disconnected: 00GRs4DShNsA96HDAAAB","timestamp":"2025-07-03 02:31:11"}
+{"level":"info","message":"📡 Client connected: vwz6Z5SkCLprmwP2AAAE","timestamp":"2025-07-03 02:31:19"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 02:35:37"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 02:35:37"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 02:35:37"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 02:35:37"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 02:35:37"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 02:35:37"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 02:35:37"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 02:35:37"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 02:35:37"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 02:35:37"}
+{"level":"info","message":"📡 Client connected: cWWMf9WxZeMxZmDIAAAB","timestamp":"2025-07-03 02:35:37"}
+{"level":"info","message":"📡 Client disconnected: cWWMf9WxZeMxZmDIAAAB","timestamp":"2025-07-03 02:35:54"}
+{"level":"info","message":"📡 Client connected: FuTDsMkg4EoN9vqUAAAE","timestamp":"2025-07-03 02:35:57"}
+{"level":"info","message":"📡 Client disconnected: FuTDsMkg4EoN9vqUAAAE","timestamp":"2025-07-03 02:39:10"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 02:44:34"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 02:44:34"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 02:44:34"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 02:44:34"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 02:44:34"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 02:44:34"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 02:44:34"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 02:44:34"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 02:44:34"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 02:44:34"}
+{"level":"info","message":"📡 Client connected: ps_d8ULClY1CoNqZAAAC","timestamp":"2025-07-03 02:45:08"}
+{"level":"info","message":"📡 Client disconnected: ps_d8ULClY1CoNqZAAAC","timestamp":"2025-07-03 02:51:06"}
+{"level":"info","message":"📡 Client connected: LtIbHW6qS6arAg5oAAAF","timestamp":"2025-07-03 02:51:25"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 02:59:01"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 02:59:01"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 02:59:01"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 02:59:01"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 02:59:01"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 02:59:01"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 02:59:01"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 02:59:01"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 02:59:01"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 02:59:01"}
+{"level":"info","message":"User admin logged in successfully from ::ffff:127.0.0.1","timestamp":"2025-07-03 02:59:33"}
+{"level":"info","message":"User admin logged in successfully from ::ffff:127.0.0.1","timestamp":"2025-07-03 02:59:46"}
+{"level":"info","message":"User admin logged in successfully from ::ffff:127.0.0.1","timestamp":"2025-07-03 02:59:58"}
+{"level":"info","message":"🔄 Starting scheduled maintenance...","timestamp":"2025-07-03 03:00:00"}
+{"level":"info","message":"🧹 Starting system maintenance...","timestamp":"2025-07-03 03:00:00"}
+{"level":"info","message":"✅ System maintenance completed","timestamp":"2025-07-03 03:00:00"}
+{"level":"info","message":"✅ Scheduled maintenance completed","timestamp":"2025-07-03 03:00:00"}
+{"level":"info","message":"🔄 Starting scheduled maintenance...","timestamp":"2025-07-03 03:00:00"}
+{"level":"info","message":"🧹 Starting system maintenance...","timestamp":"2025-07-03 03:00:00"}
+{"level":"info","message":"✅ System maintenance completed","timestamp":"2025-07-03 03:00:00"}
+{"level":"info","message":"✅ Scheduled maintenance completed","timestamp":"2025-07-03 03:00:00"}
+{"level":"info","message":"User admin logged in successfully from ::ffff:127.0.0.1","timestamp":"2025-07-03 03:00:10"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 03:00:10"}
+{"level":"info","message":"📡 Client disconnected: LtIbHW6qS6arAg5oAAAF","timestamp":"2025-07-03 03:00:32"}
+{"level":"info","message":"📡 Client connected: de0S6Squrt2fNCZYAAAB","timestamp":"2025-07-03 03:00:40"}
+{"level":"info","message":"User admin logged in successfully from ::ffff:127.0.0.1","timestamp":"2025-07-03 03:06:05"}
+{"level":"info","message":"📡 Client disconnected: de0S6Squrt2fNCZYAAAB","timestamp":"2025-07-03 03:09:48"}
+{"level":"info","message":"📡 Client connected: K08APcA98F6-ULZ6AAAE","timestamp":"2025-07-03 03:09:59"}
+{"level":"info","message":"📡 Client disconnected: K08APcA98F6-ULZ6AAAE","timestamp":"2025-07-03 03:14:52"}
+{"level":"info","message":"🔄 Starting scheduled processing cycle...","timestamp":"2025-07-03 04:00:00"}
+{"level":"info","message":"OpenAI client initialized for semantic enrichment","timestamp":"2025-07-03 04:00:00"}
+{"level":"info","message":"✅ Scheduled processing cycle completed","timestamp":"2025-07-03 04:00:00"}
+{"level":"info","message":"🔄 Starting scheduled processing cycle...","timestamp":"2025-07-03 06:00:00"}
+{"level":"info","message":"OpenAI client initialized for semantic enrichment","timestamp":"2025-07-03 06:00:00"}
+{"level":"info","message":"🔄 Starting scheduled asset harvest...","timestamp":"2025-07-03 06:00:00"}
+{"errors":[{"instance":{"createdAt":"2025-07-03T06:00:00.904Z","id":null,"progress":0,"startedAt":"2025-07-03T06:00:00.904Z","status":"running","type":"download","updatedAt":"2025-07-03T06:00:00.904Z"},"message":"ProcessingJob.assetId cannot be null","origin":"CORE","path":"assetId","type":"notNull Violation","validatorArgs":[],"validatorKey":"is_null","validatorName":null,"value":null}],"level":"error","message":"❌ Scheduled asset harvest failed: notNull Violation: ProcessingJob.assetId cannot be null","name":"SequelizeValidationError","stack":"SequelizeValidationError: notNull Violation: ProcessingJob.assetId cannot be null\n    at InstanceValidator._validate (/home/app/node_modules/sequelize/lib/instance-validator.js:50:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async InstanceValidator._validateAndRunHooks (/home/app/node_modules/sequelize/lib/instance-validator.js:60:7)\n    at async InstanceValidator.validate (/home/app/node_modules/sequelize/lib/instance-validator.js:54:12)\n    at async model.save (/home/app/node_modules/sequelize/lib/model.js:2426:7)\n    at async ProcessingJob.create (/home/app/node_modules/sequelize/lib/model.js:1362:12)\n    at async TaskScheduler.executeHarvestCycle (/home/app/server/services/scheduler.js:138:17)\n    at async cron.schedule.scheduled [as _execution] (/home/app/server/services/scheduler.js:38:9)","timestamp":"2025-07-03 06:00:00"}
+{"level":"info","message":"✅ Scheduled processing cycle completed","timestamp":"2025-07-03 06:00:00"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 14:57:33"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 14:57:33"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 14:57:33"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 14:57:33"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 14:57:33"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 14:57:33"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 14:57:33"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 14:57:33"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 14:57:33"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 14:57:33"}
+{"level":"info","message":"📡 Client connected: bwp_MedGXYM5Lwj7AAAC","timestamp":"2025-07-03 14:57:50"}
+{"level":"info","message":"📡 Client connected: xWHfFLM4Jpq3j_y6AAAE","timestamp":"2025-07-03 15:01:42"}
+{"level":"info","message":"📡 Client disconnected: bwp_MedGXYM5Lwj7AAAC","timestamp":"2025-07-03 15:01:56"}
+{"level":"info","message":"🔄 Starting scheduled processing cycle...","timestamp":"2025-07-03 16:00:00"}
+{"level":"info","message":"OpenAI client initialized for semantic enrichment","timestamp":"2025-07-03 16:00:00"}
+{"level":"info","message":"🔄 Starting scheduled upload cycle...","timestamp":"2025-07-03 16:00:00"}
+{"level":"info","message":"✅ Scheduled processing cycle completed","timestamp":"2025-07-03 16:00:00"}
+{"level":"info","message":"✅ Scheduled upload cycle completed","timestamp":"2025-07-03 16:00:00"}
+{"level":"info","message":"📡 Client disconnected: xWHfFLM4Jpq3j_y6AAAE","timestamp":"2025-07-03 17:36:20"}
+{"level":"info","message":"📊 Starting real-time system monitoring...","timestamp":"2025-07-03 17:36:31"}
+{"level":"info","message":"✅ System monitoring started","timestamp":"2025-07-03 17:36:31"}
+{"level":"info","message":"🕐 Initializing Task Scheduler...","timestamp":"2025-07-03 17:36:31"}
+{"level":"info","message":"▶️ Starting all scheduled tasks...","timestamp":"2025-07-03 17:36:31"}
+{"level":"info","message":"✅ Started harvest scheduler","timestamp":"2025-07-03 17:36:31"}
+{"level":"info","message":"✅ Started processing scheduler","timestamp":"2025-07-03 17:36:31"}
+{"level":"info","message":"✅ Started upload scheduler","timestamp":"2025-07-03 17:36:31"}
+{"level":"info","message":"✅ Started metadata scheduler","timestamp":"2025-07-03 17:36:31"}
+{"level":"info","message":"✅ Started maintenance scheduler","timestamp":"2025-07-03 17:36:31"}
+{"level":"info","message":"✅ Task Scheduler initialized successfully","timestamp":"2025-07-03 17:36:31"}

@@ -1,0 +1,3 @@
+2025-06-26 23:48:02 - ai_music_uploader - ERROR - error:260 - Dashboard error: Could not build url for endpoint 'batch'. Did you mean 'static' instead?
+2025-06-26 23:50:52 - ai_music_uploader - ERROR - error:260 - Dashboard error: 'moment' is undefined
+2025-06-27 00:02:18 - ai_music_uploader - ERROR - error:260 - Status page error: 'stats' is undefined
