@@ -99,6 +99,13 @@ app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 app.use('/downloads', express.static(path.join(__dirname, '../downloads')));
 app.use('/processed', express.static(path.join(__dirname, '../processed')));
 
+// Serve React Client Build in Production
+if (process.env.NODE_ENV === 'production') {
+  // Serve static files from React build
+  app.use(express.static(path.join(__dirname, '../client/build')));
+  console.log('✅ Serving React client from build directory');
+}
+
 // Load routes after basic setup
 let authRoutes, apiRoutes, uploadRoutes, systemRoutes;
 
@@ -153,11 +160,24 @@ app.get('/health', (req, res) => {
   });
 });
 
+// Catch-all handler: send back React's index.html file in production
+if (process.env.NODE_ENV === 'production') {
+  app.get('*', (req, res) => {
+    // Don't catch API routes
+    if (req.path.startsWith('/api') || req.path.startsWith('/auth') || req.path.startsWith('/upload') || req.path.startsWith('/health')) {
+      return res.status(404).json({ error: 'API endpoint not found' });
+    }
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+  });
+}
+
 // Import centralized error handling
 const { errorHandler, notFoundHandler } = require('./middleware/errorHandler');
 
-// Apply error handling middleware
-app.use(notFoundHandler);
+// Apply error handling middleware (only in development or for API routes)
+if (process.env.NODE_ENV !== 'production') {
+  app.use(notFoundHandler);
+}
 app.use(errorHandler);
 
 // Socket.IO handling (only if enabled)
