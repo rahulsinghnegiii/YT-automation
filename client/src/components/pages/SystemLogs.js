@@ -31,6 +31,7 @@ import {
   CheckCircle as SuccessIcon,
 } from '@mui/icons-material';
 import { toast } from 'react-hot-toast';
+import api from '../../utils/api';
 
 const SystemLogs = () => {
   const [logs, setLogs] = useState([]);
@@ -52,25 +53,12 @@ const SystemLogs = () => {
       const url = `/api/system/logs?${params}`;
       console.log('📋 System logs URL:', url);
 
-      const response = await fetch(url, {
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-      });
-
-      console.log('📋 System logs response status:', response.status);
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('📋 System logs error response:', errorText);
-        throw new Error(`Failed to fetch logs: ${response.status}`);
-      }
-
-      const data = await response.json();
-      console.log('📋 System logs data:', data);
+      const response = await api.get(url);
+      console.log('📋 System logs response:', response.data);
       
-      setLogs(data.data.logs);
-      setTotal(data.data.total);
+      const data = response.data;
+      setLogs(data.data.logs || []);
+      setTotal(data.data.total || 0);
       
       console.log('📋 System logs processed:', {
         logsCount: data.data.logs?.length || 0,

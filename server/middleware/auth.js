@@ -15,6 +15,28 @@ const authenticateToken = async (req, res, next) => {
       });
     }
 
+    // Mock mode handling
+    if (process.env.NODE_ENV === 'development' && process.env.USE_MOCK_DATA === 'true') {
+      try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET || 'mock-secret-key');
+        
+        // Mock user data
+        req.user = {
+          userId: decoded.userId || 1,
+          username: decoded.username || 'admin',
+          role: decoded.role || 'admin'
+        };
+        
+        return next();
+      } catch (mockError) {
+        logger.error('Mock authentication error:', mockError);
+        return res.status(401).json({
+          success: false,
+          error: 'Invalid token (mock mode)'
+        });
+      }
+    }
+
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     
     // Verify user still exists and is active

@@ -5,15 +5,26 @@ module.exports = override(
   addBabelPlugin('@babel/plugin-proposal-nullish-coalescing-operator'),
   (config, env) => {
     if (env === 'development') {
-      // Configure proxy to exclude WebSocket connections
+      // Configure development server settings
       config.devServer = {
         ...config.devServer,
-        setupMiddlewares: (middlewares, devServer) => {
-          // Don't proxy WebSocket connections
-          devServer.app.use('/socket.io/', (req, res, next) => {
-            res.status(404).send('WebSocket endpoint not proxied');
-          });
-          return middlewares;
+        // Allow WebSocket connections (remove the blocking middleware)
+        client: {
+          webSocketURL: 'auto://0.0.0.0:0/ws',
+        },
+        // Configure proxy if needed
+        proxy: {
+          '/api': {
+            target: 'http://localhost:3000',
+            changeOrigin: true,
+            ws: false, // Don't proxy WebSocket connections for /api
+          },
+          '/auth': {
+            target: 'http://localhost:3000',
+            changeOrigin: true,
+            ws: false,
+          },
+          // Don't proxy socket.io - let the client connect directly to port 3000
         }
       };
     }

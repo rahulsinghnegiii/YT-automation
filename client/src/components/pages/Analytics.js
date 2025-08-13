@@ -30,7 +30,7 @@ import {
   AreaChart,
   Area,
 } from 'recharts';
-import axios from 'axios';
+import api from '../../utils/api';
 import dayjs from 'dayjs';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'];
@@ -56,10 +56,46 @@ const Analytics = () => {
         endDate: endDate.format('YYYY-MM-DD'),
       };
 
-      const response = await axios.get('/api/analytics', { params });
-      setData(response.data);
+      const response = await api.get('/api/analytics', { params });
+      
+      // Handle different response structures (mock vs real API)
+      let analyticsData;
+      if (response.data.success && response.data.data) {
+        // Mock data structure: { success: true, data: { ... } }
+        analyticsData = response.data.data;
+      } else if (response.data.data) {
+        // Real API structure: { data: { ... } }
+        analyticsData = response.data.data;
+      } else {
+        // Direct data structure: { uploads: [], ... }
+        analyticsData = response.data;
+      }
+      
+      // Ensure all required properties exist with default values
+      const safeData = {
+        uploads: analyticsData.uploads || [],
+        processing: analyticsData.processing || [],
+        storage: analyticsData.storage || [],
+        performance: analyticsData.performance || [],
+        assetTypes: (analyticsData.assetTypes || []).map(item => ({
+          name: item.name || item.type || 'Unknown',
+          value: item.value || item.count || 0
+        })),
+        statusDistribution: analyticsData.statusDistribution || [],
+      };
+      
+      setData(safeData);
     } catch (error) {
       console.error('Failed to fetch analytics:', error);
+      // Set empty data structure on error to prevent crashes
+      setData({
+        uploads: [],
+        processing: [],
+        storage: [],
+        performance: [],
+        assetTypes: [],
+        statusDistribution: [],
+      });
     }
   }, [timeRange, startDate, endDate]);
 

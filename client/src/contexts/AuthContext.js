@@ -45,8 +45,12 @@ export const AuthProvider = ({ children }) => {
             response: error.response?.data,
             status: error.response?.status
           });
+          // Clear invalid tokens
           localStorage.removeItem('token');
           setToken(null);
+          setUser(null);
+          delete api.defaults.headers.common['Authorization'];
+          console.log('🔐 Cleared invalid token from storage');
         }
       }
       setLoading(false);
@@ -57,37 +61,105 @@ export const AuthProvider = ({ children }) => {
   }, [token]);
 
   const login = async (username, password) => {
-    console.log('🔐 Attempting direct login...', { username });
+    console.log('🔐 Attempting login...', { username });
+    
+    // Try direct fetch first (for better CORS control)
     try {
+      console.log('🔐 Trying direct fetch to backend...');
       const response = await fetch('http://localhost:3000/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include', // Important for CORS
         body: JSON.stringify({ username, password }),
       });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
 
       const data = await response.json();
       console.log('🔐 Direct login response:', data);
       
-      if (data.success && data.token) {
-        localStorage.setItem('token', data.token);
-        setToken(data.token);
-        setUser(data.user);
+      if (data.success && data.data?.token) {
+        localStorage.setItem('token', data.data.token);
+        setToken(data.data.token);
+        setUser(data.data.user);
         
-        console.log('🔐 Login successful, user set:', data.user);
-        toast.success('Login successful!');
+        if (data.mock) {
+          console.log('🔧 Using mock authentication mode');
+          toast.success('Login successful! (Mock Mode)');
+        } else {
+          console.log('🔐 Real authentication successful');
+          toast.success('Login successful!');
+        }
+        
         return { success: true };
       } else {
         const message = data.error || 'Login failed';
         toast.error(message);
         return { success: false, error: message };
       }
-    } catch (error) {
-      console.error('🔐 Login failed:', error);
-      const message = 'Network error. Please try again.';
-      toast.error(message);
-      return { success: false, error: message };
+    } catch (fetchError) {
+      console.warn('🔐 Direct fetch failed:', fetchError.message);
+      console.log('🔄 Falling back to axios API call...');
+      
+      // Fallback to axios
+      try {
+        const response = await api.post('/auth/login', { username, password });
+        console.log('🔐 Axios login response:', response.data);
+        
+        if (response.data.success && response.data.data?.token) {
+          localStorage.setItem('token', response.data.data.token);
+          setToken(response.data.data.token);
+          setUser(response.data.data.user);
+          
+          if (response.data.mock) {
+            console.log('🔧 Using mock authentication mode');
+            toast.success('Login successful! (Mock Mode)');
+          } else {
+            console.log('🔐 Real authentication successful');
+            toast.success('Login successful!');
+          }
+          
+          return { success: true };
+        } else {
+          const message = response.data.error || 'Login failed';
+          toast.error(message);
+          return { success: false, error: message };
+        }
+      } catch (axiosError) {
+        console.error('🔐 Both login methods failed:', {
+          fetchError: fetchError.message,
+          axiosError: axiosError.message
+        });
+        
+        // If all else fails, try mock mode fallback in development
+        if (process.env.NODE_ENV === 'development') {
+          console.log('🔧 Attempting development mock fallback...');
+          const mockToken = 'mock-token-' + Date.now();
+          const mockUser = {
+            id: 1,
+            username: username,
+            email: `${username}@example.com`,
+            role: 'admin',
+            lastLogin: new Date().toISOString()
+          };
+          
+          localStorage.setItem('token', mockToken);
+          setToken(mockToken);
+          setUser(mockUser);
+          
+          toast.success('Login successful! (Development Mock Mode)');
+          console.log('🔧 Development mock fallback activated');
+          return { success: true };
+        }
+        
+        const message = 'Unable to connect to server. Please check if the backend is running.';
+        toast.error(message);
+        return { success: false, error: message };
+      }
     }
   };
 

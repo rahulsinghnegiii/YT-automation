@@ -17,6 +17,11 @@ module.exports = (sequelize) => {
       allowNull: true,
       field: 'user_id'
     },
+    channelConfigId: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      field: 'channel_config_id'
+    },
     platform: {
       type: DataTypes.ENUM('youtube', 'tiktok', 'instagram'),
       defaultValue: 'youtube'

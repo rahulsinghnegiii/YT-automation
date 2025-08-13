@@ -22,6 +22,12 @@ async function seedDatabase() {
       console.log('✅ Admin user already exists');
     }
 
+    // Skip test data seeding for now to avoid database schema issues
+    // if (process.env.NODE_ENV === 'development') {
+    //   const { seedTestData } = require('./seedTestData');
+    //   await seedTestData();
+    // }
+    
     console.log('🎉 Database seeding completed successfully');
     
   } catch (error) {

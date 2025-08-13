@@ -19,6 +19,10 @@ const ProcessingJob = require('./ProcessingJob')(sequelize);
 const Upload = require('./Upload')(sequelize);
 const SystemMetric = require('./SystemMetric')(sequelize);
 const AuditLog = require('./AuditLog')(sequelize);
+const ChannelConfig = require('./ChannelConfig')(sequelize);
+const Playlist = require('./Playlist')(sequelize);
+const PromotionActivity = require('./PromotionActivity')(sequelize);
+const EngagementActivity = require('./EngagementActivity')(sequelize);
 
 // Define associations
 Asset.hasMany(ProcessingJob, { foreignKey: 'asset_id', as: 'jobs' });
@@ -33,6 +37,19 @@ Upload.belongsTo(User, { foreignKey: 'user_id', as: 'user' });
 User.hasMany(AuditLog, { foreignKey: 'user_id', as: 'auditLogs' });
 AuditLog.belongsTo(User, { foreignKey: 'user_id', as: 'user' });
 
+// New model associations
+ChannelConfig.hasMany(Upload, { foreignKey: 'channel_config_id', as: 'uploads' });
+Upload.belongsTo(ChannelConfig, { foreignKey: 'channel_config_id', as: 'channelConfig' });
+
+ChannelConfig.hasMany(Playlist, { foreignKey: 'channel_config_id', as: 'playlists' });
+Playlist.belongsTo(ChannelConfig, { foreignKey: 'channel_config_id', as: 'channelConfig' });
+
+ChannelConfig.hasMany(EngagementActivity, { foreignKey: 'channel_config_id', as: 'engagementActivities' });
+EngagementActivity.belongsTo(ChannelConfig, { foreignKey: 'channel_config_id', as: 'channelConfig' });
+
+Upload.hasMany(PromotionActivity, { foreignKey: 'upload_id', as: 'promotionActivities' });
+PromotionActivity.belongsTo(Upload, { foreignKey: 'upload_id', as: 'upload' });
+
 module.exports = {
   sequelize,
   User,
@@ -40,5 +57,9 @@ module.exports = {
   ProcessingJob,
   Upload,
   SystemMetric,
-  AuditLog
+  AuditLog,
+  ChannelConfig,
+  Playlist,
+  PromotionActivity,
+  EngagementActivity
 };

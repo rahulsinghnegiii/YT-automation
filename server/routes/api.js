@@ -2,16 +2,76 @@ const express = require('express');
 const path = require('path');
 const { Asset, Upload, ProcessingJob, SystemMetric, AuditLog } = require('../models');
 const { authenticateToken } = require('../middleware/auth');
+const { asyncHandler, createNotFoundError, createValidationError } = require('../middleware/errorHandler');
 const logger = require('../utils/logger');
 const { scheduler } = require('../services/scheduler');
 
 const router = express.Router();
+
+// Import mock data conditionally with verbose logging
+let mockAssets, mockScheduler, mockAnalytics;
+console.log('[Mock Data Loader] Checking environment variables:');
+console.log(`  - NODE_ENV: ${process.env.NODE_ENV}`);
+console.log(`  - USE_MOCK_DATA: ${process.env.USE_MOCK_DATA}`);
+
+if (process.env.NODE_ENV === 'development' || process.env.USE_MOCK_DATA === 'true') {
+  console.log('[Mock Data Loader] Attempting to load mock data files...');
+  
+  // Load assets mock data
+  try {
+    mockAssets = require('../../mock/assets');
+    console.log('[Mock Data Loader] ✅ Successfully loaded mock/assets.js');
+    console.log(`  - Available functions: ${Object.keys(mockAssets).join(', ')}`);
+  } catch (error) {
+    console.error('[Mock Data Loader] ❌ Failed to load mock/assets.js:', error.message);
+    console.error('[Mock Data Loader] Stack trace:', error.stack);
+  }
+  
+  // Load scheduler mock data
+  try {
+    mockScheduler = require('../../mock/scheduler');
+    console.log('[Mock Data Loader] ✅ Successfully loaded mock/scheduler.js');
+  } catch (error) {
+    console.error('[Mock Data Loader] ❌ Failed to load mock/scheduler.js:', error.message);
+  }
+  
+  // Load analytics mock data
+  try {
+    mockAnalytics = require('../../mock/analytics');
+    console.log('[Mock Data Loader] ✅ Successfully loaded mock/analytics.js');
+  } catch (error) {
+    console.error('[Mock Data Loader] ❌ Failed to load mock/analytics.js:', error.message);
+  }
+  
+  console.log('[Mock Data Loader] Mock data loading complete.');
+  logger.info('Mock data loading attempted for development/mock environment');
+} else {
+  console.log('[Mock Data Loader] Skipping mock data - not in development mode');
+}
 
 // Apply authentication to all routes
 router.use(authenticateToken);
 
 // Dashboard statistics
 router.get('/dashboard/stats', async (req, res) => {
+  const isDevelopment = process.env.NODE_ENV === 'development';
+  const useMockData = process.env.USE_MOCK_DATA === 'true';
+
+  // Use mock data in development
+  if (isDevelopment || useMockData) {
+    try {
+      logger.info('[/api/dashboard/stats] Using mock data');
+      const mockStats = getMockDashboardStats();
+      return res.json({
+        success: true,
+        data: mockStats
+      });
+    } catch (error) {
+      logger.error('[/api/dashboard/stats] Mock data failed:', error);
+      return res.status(500).json({ error: 'Mock data load failed' });
+    }
+  }
+
   try {
     const stats = await getDashboardStats();
     
@@ -30,6 +90,24 @@ router.get('/dashboard/stats', async (req, res) => {
 
 // Dashboard metrics history
 router.get('/dashboard/metrics-history', async (req, res) => {
+  const isDevelopment = process.env.NODE_ENV === 'development';
+  const useMockData = process.env.USE_MOCK_DATA === 'true';
+
+  // Use mock data in development
+  if (isDevelopment || useMockData) {
+    try {
+      logger.info('[/api/dashboard/metrics-history] Using mock data');
+      const mockMetrics = getMockMetricsHistory(parseInt(req.query.limit) || 50);
+      return res.json({
+        success: true,
+        data: mockMetrics
+      });
+    } catch (error) {
+      logger.error('[/api/dashboard/metrics-history] Mock data failed:', error);
+      return res.status(500).json({ error: 'Mock data load failed' });
+    }
+  }
+
   try {
     const limit = parseInt(req.query.limit) || 50;
     const metrics = await SystemMetric.findAll({
@@ -115,50 +193,91 @@ router.get('/status', async (req, res) => {
 });
 
 // Assets management
-router.get('/assets', async (req, res) => {
-  try {
-    const { page = 1, limit = 20, status, type } = req.query;
-    const offset = (page - 1) * limit;
-    
-    const where = {};
-    if (status) where.status = status;
-    if (type) where.type = type;
+router.get('/assets', asyncHandler(async (req, res) => {
+  const isDevelopment = process.env.NODE_ENV === 'development';
+  const useMockData = process.env.USE_MOCK_DATA === 'true';
 
-    const { count, rows: assets } = await Asset.findAndCountAll({
-      where,
-      include: [
-        { model: ProcessingJob, as: 'jobs' },
-        { model: Upload, as: 'uploads' }
-      ],
-      order: [['createdAt', 'DESC']],
-      limit: parseInt(limit),
-      offset: parseInt(offset)
-    });
+  // Verbose logging
+  logger.info('[/api/assets] route handler invoked');
+  logger.info(`  - NODE_ENV: ${process.env.NODE_ENV}`)
+  logger.info(`  - USE_MOCK_DATA: ${process.env.USE_MOCK_DATA}`);
 
-    res.json({
-      success: true,
-      data: {
-        assets,
-        pagination: {
-          total: count,
-          page: parseInt(page),
-          limit: parseInt(limit),
-          pages: Math.ceil(count / limit)
-        }
-      }
-    });
-  } catch (error) {
-    logger.error('Assets error:', error);
-    res.status(500).json({
-      success: false,
-      error: 'Failed to fetch assets'
-    });
+  if (isDevelopment || useMockData) {
+    try {
+      const { mockAssetsPaginated } = require('../../mock/assets');
+      logger.info('  - Using mock data branch for /api/assets');
+
+      const { page = 1, limit = 20, status, type } = req.query;
+      const mockData = mockAssetsPaginated(parseInt(page), parseInt(limit), status, type);
+      
+      return res.json(mockData);
+    } catch (error) {
+      logger.error('  - Mock data load failed for /api/assets:', error);
+      return res.status(500).json({ error: 'Mock data load failed' });
+    }
   }
-});
+
+  // Production logic (no changes needed here)
+  const { page = 1, limit = 20, status, type } = req.query;
+  const offset = (page - 1) * limit;
+  
+  const where = {};
+  if (status) where.status = status;
+  if (type) where.type = type;
+
+  const { count, rows: assets } = await Asset.findAndCountAll({
+    where,
+    include: [
+      { model: ProcessingJob, as: 'jobs' },
+      { model: Upload, as: 'uploads' }
+    ],
+    order: [['createdAt', 'DESC']],
+    limit: parseInt(limit),
+    offset: parseInt(offset)
+  });
+
+  res.json({
+    success: true,
+    data: {
+      assets,
+      pagination: {
+        total: count,
+        page: parseInt(page),
+        limit: parseInt(limit),
+        pages: Math.ceil(count / limit)
+      }
+    }
+  });
+}));
 
 // Single asset details
 router.get('/assets/:id', async (req, res) => {
   try {
+    const isDevelopment = process.env.NODE_ENV === 'development';
+    const useMockData = process.env.USE_MOCK_DATA === 'true';
+
+    // Mock mode handling
+    if (isDevelopment || useMockData) {
+      try {
+        const { mockAssetById } = require('../../mock/assets');
+        const mockAsset = mockAssetById(req.params.id);
+        
+        if (!mockAsset) {
+          return res.status(404).json({
+            success: false,
+            error: 'Asset not found'
+          });
+        }
+        
+        return res.json({
+          success: true,
+          data: mockAsset
+        });
+      } catch (mockError) {
+        logger.error('Mock asset details failed:', mockError);
+      }
+    }
+
     const asset = await Asset.findByPk(req.params.id, {
       include: [
         { model: ProcessingJob, as: 'jobs' },
@@ -185,6 +304,252 @@ router.get('/assets/:id', async (req, res) => {
     });
   }
 });
+
+// Delete asset
+router.delete('/assets/:id', asyncHandler(async (req, res) => {
+  const isDevelopment = process.env.NODE_ENV === 'development';
+  const useMockData = process.env.USE_MOCK_DATA === 'true';
+
+  // Mock mode handling
+  if (isDevelopment || useMockData) {
+    logger.info(`Mock delete asset ${req.params.id}`);
+    
+    // Log the mock deletion
+    await AuditLog.create({
+      userId: req.user?.userId || 1,
+      action: 'asset_deleted',
+      resource: 'asset',
+      resourceId: req.params.id,
+      details: { assetId: req.params.id, mock: true },
+      ipAddress: req.ip,
+      userAgent: req.get('User-Agent'),
+      success: true
+    }).catch(() => {}); // Ignore audit log errors in mock mode
+    
+    return res.json({
+      success: true,
+      message: 'Asset deleted successfully (Mock Mode)',
+      data: { id: req.params.id, mock: true }
+    });
+  }
+
+  const asset = await Asset.findByPk(req.params.id);
+  
+  if (!asset) {
+    return createNotFoundError('Asset not found');
+  }
+
+  // Delete associated files
+  const fs = require('fs').promises;
+  const path = require('path');
+  
+  try {
+    if (asset.originalPath) {
+      await fs.unlink(asset.originalPath);
+    }
+    if (asset.processedPath && asset.processedPath !== asset.originalPath) {
+      await fs.unlink(asset.processedPath);
+    }
+  } catch (fileError) {
+    logger.warn('File deletion warning:', fileError.message);
+  }
+
+  // Delete associated processing jobs and uploads
+  await ProcessingJob.destroy({ where: { assetId: asset.id } });
+  await Upload.destroy({ where: { assetId: asset.id } });
+  
+  // Delete the asset record
+  await asset.destroy();
+  
+  // Log the deletion
+  await AuditLog.create({
+    userId: req.user.userId,
+    action: 'asset_deleted',
+    resource: 'asset',
+    resourceId: asset.id,
+    details: { filename: asset.filename, originalPath: asset.originalPath },
+    ipAddress: req.ip,
+    userAgent: req.get('User-Agent'),
+    success: true
+  });
+
+  res.json({
+    success: true,
+    message: 'Asset deleted successfully',
+    data: { id: asset.id }
+  });
+}));
+
+// Update asset
+router.put('/assets/:id', asyncHandler(async (req, res) => {
+  const isDevelopment = process.env.NODE_ENV === 'development';
+  const useMockData = process.env.USE_MOCK_DATA === 'true';
+
+  // Mock mode handling
+  if (isDevelopment || useMockData) {
+    logger.info(`Mock update asset ${req.params.id}`);
+    
+    // Simulate asset update in mock mode
+    const { mockAssetById } = require('../../mock/assets');
+    const mockAsset = mockAssetById(req.params.id);
+    
+    if (!mockAsset) {
+      return res.status(404).json({
+        success: false,
+        error: 'Asset not found'
+      });
+    }
+    
+    // Merge update data with mock asset (simulate update)
+    const updatedAsset = {
+      ...mockAsset,
+      ...req.body,
+      updatedAt: new Date().toISOString()
+    };
+    
+    // Log the mock update
+    await AuditLog.create({
+      userId: req.user?.userId || 1,
+      action: 'asset_updated',
+      resource: 'asset',
+      resourceId: req.params.id,
+      details: { 
+        assetId: req.params.id, 
+        updates: req.body,
+        mock: true 
+      },
+      ipAddress: req.ip,
+      userAgent: req.get('User-Agent'),
+      success: true
+    }).catch(() => {}); // Ignore audit log errors in mock mode
+    
+    return res.json({
+      success: true,
+      message: 'Asset updated successfully (Mock Mode)',
+      data: updatedAsset
+    });
+  }
+
+  // Production logic
+  const asset = await Asset.findByPk(req.params.id);
+  
+  if (!asset) {
+    return createNotFoundError('Asset not found');
+  }
+
+  // Update asset with provided data
+  const allowedUpdates = ['filename', 'status', 'type', 'metadata', 'processingMetadata', 'tags'];
+  const updateData = {};
+  
+  // Only update allowed fields
+  for (const field of allowedUpdates) {
+    if (req.body[field] !== undefined) {
+      updateData[field] = req.body[field];
+    }
+  }
+  
+  await asset.update(updateData);
+  
+  // Log the update
+  await AuditLog.create({
+    userId: req.user.userId,
+    action: 'asset_updated',
+    resource: 'asset',
+    resourceId: asset.id,
+    details: { 
+      filename: asset.filename, 
+      updates: updateData 
+    },
+    ipAddress: req.ip,
+    userAgent: req.get('User-Agent'),
+    success: true
+  });
+
+  // Reload asset to get updated data
+  await asset.reload({
+    include: [
+      { model: ProcessingJob, as: 'jobs' },
+      { model: Upload, as: 'uploads' }
+    ]
+  });
+
+  res.json({
+    success: true,
+    message: 'Asset updated successfully',
+    data: asset
+  });
+}));
+
+// Download asset
+router.get('/assets/:id/download', asyncHandler(async (req, res) => {
+  const isDevelopment = process.env.NODE_ENV === 'development';
+  const useMockData = process.env.USE_MOCK_DATA === 'true';
+
+  // Mock mode handling
+  if (isDevelopment || useMockData) {
+    logger.info(`Mock download asset ${req.params.id}`);
+    
+    // Create a mock file response
+    const mockData = Buffer.from(`Mock audio file data for asset ${req.params.id}`, 'utf8');
+    
+    res.setHeader('Content-Disposition', `attachment; filename="mock-asset-${req.params.id}.mp3"`);
+    res.setHeader('Content-Type', 'audio/mpeg');
+    res.setHeader('Content-Length', mockData.length);
+    
+    return res.send(mockData);
+  }
+
+  const asset = await Asset.findByPk(req.params.id);
+  
+  if (!asset) {
+    return createNotFoundError('Asset not found');
+  }
+
+  const filePath = asset.processedPath || asset.originalPath;
+  
+  if (!filePath) {
+    return res.status(400).json({
+      success: false,
+      error: 'No file available for download'
+    });
+  }
+
+  const fs = require('fs');
+  const path = require('path');
+  
+  // Check if file exists
+  if (!fs.existsSync(filePath)) {
+    return res.status(404).json({
+      success: false,
+      error: 'File not found on disk'
+    });
+  }
+
+  // Get file stats
+  const stat = fs.statSync(filePath);
+  const filename = path.basename(filePath);
+  
+  // Set headers for file download
+  res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+  res.setHeader('Content-Type', 'application/octet-stream');
+  res.setHeader('Content-Length', stat.size);
+  
+  // Stream the file
+  const fileStream = fs.createReadStream(filePath);
+  fileStream.pipe(res);
+  
+  // Log the download
+  await AuditLog.create({
+    userId: req.user.userId,
+    action: 'asset_downloaded',
+    resource: 'asset',
+    resourceId: asset.id,
+    details: { filename: asset.filename },
+    ipAddress: req.ip,
+    userAgent: req.get('User-Agent'),
+    success: true
+  }).catch(() => {}); // Don't fail download if audit log fails
+}));
 
 // Processing jobs
 router.get('/jobs', async (req, res) => {
@@ -267,6 +632,12 @@ router.get('/uploads', async (req, res) => {
 // Scheduler management
 router.get('/scheduler/status', async (req, res) => {
   try {
+    // Use mock data in development if available
+    if (process.env.NODE_ENV === 'development' && mockScheduler) {
+      const mockData = mockScheduler.mockSchedulerStatus;
+      return res.json(mockData);
+    }
+
     if (!scheduler.isInitialized) {
       return res.status(503).json({
         success: false,
@@ -292,6 +663,12 @@ router.get('/scheduler/status', async (req, res) => {
 // Get scheduler configuration
 router.get('/scheduler/config', async (req, res) => {
   try {
+    // Use mock data in development if available
+    if (process.env.NODE_ENV === 'development' && mockScheduler) {
+      const mockData = mockScheduler.mockSchedulerConfig;
+      return res.json(mockData);
+    }
+
     if (!scheduler.isInitialized) {
       return res.status(503).json({
         success: false,
@@ -977,63 +1354,6 @@ router.post('/upload/youtube/save-token', async (req, res) => {
   }
 });
 
-// Dashboard metrics history
-router.get('/dashboard/metrics-history', async (req, res) => {
-  try {
-    const limit = parseInt(req.query.limit) || 50;
-    const metrics = await SystemMetric.findAll({
-      order: [['timestamp', 'DESC']],
-      limit: limit,
-      attributes: ['timestamp', 'cpuPercent', 'memoryPercent', 'diskPercent', 'networkBytesIn', 'networkBytesOut']
-    });
-    
-    res.json({
-      success: true,
-      data: metrics.reverse() // Reverse to get chronological order
-    });
-  } catch (error) {
-    logger.error('Dashboard metrics history error:', error);
-    res.status(500).json({
-      success: false,
-      error: 'Failed to fetch metrics history'
-    });
-  }
-});
-
-// Dashboard recent activity
-router.get('/dashboard/recent-activity', async (req, res) => {
-  try {
-    const limit = parseInt(req.query.limit) || 20;
-    
-    // Get recent audit logs as activity - simplified to avoid association issues
-    const activities = await AuditLog.findAll({
-      order: [['createdAt', 'DESC']],
-      limit: limit,
-      attributes: ['id', 'action', 'resource', 'details', 'success', 'createdAt']
-    });
-    
-    const formattedActivities = activities.map(activity => ({
-      id: activity.id,
-      type: activity.action,
-      description: getActivityDescription(activity),
-      status: activity.success ? 'success' : 'error',
-      timestamp: activity.createdAt,
-      user: activity.details?.username || 'System'
-    }));
-    
-    res.json({
-      success: true,
-      data: formattedActivities
-    });
-  } catch (error) {
-    logger.error('Dashboard recent activity error:', error);
-    res.status(500).json({
-      success: false,
-      error: 'Failed to fetch recent activity',
-      data: [] // Return empty array on error to prevent frontend crashes
-    });
-  }
-});
 
 // Processing jobs management
 router.get('/processing/jobs', async (req, res) => {
@@ -1135,9 +1455,72 @@ router.post('/processing/start', async (req, res) => {
   }
 });
 
+// Delete processing job
+router.delete('/processing/jobs/:id', async (req, res) => {
+  try {
+    const jobId = req.params.id;
+    
+    if (!jobId) {
+      return res.status(400).json({
+        success: false,
+        error: 'Job ID is required'
+      });
+    }
+
+    const job = await ProcessingJob.findByPk(jobId);
+    if (!job) {
+      return res.status(404).json({
+        success: false,
+        error: 'Processing job not found'
+      });
+    }
+
+    // Only allow deletion of completed, failed, or cancelled jobs
+    if (job.status === 'running' || job.status === 'pending') {
+      return res.status(400).json({
+        success: false,
+        error: 'Cannot delete running or pending jobs. Please cancel them first.'
+      });
+    }
+
+    await job.destroy();
+
+    // Log the action
+    await AuditLog.create({
+      userId: req.user.userId,
+      action: 'processing_job_deleted',
+      resource: 'processing',
+      details: { 
+        jobId: jobId,
+        status: job.status,
+        type: job.type
+      },
+      success: true
+    });
+
+    res.json({
+      success: true,
+      message: 'Processing job deleted successfully'
+    });
+  } catch (error) {
+    logger.error('Delete processing job error:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to delete processing job'
+    });
+  }
+});
+
 // Analytics endpoint
 router.get('/analytics', async (req, res) => {
   try {
+    // Use mock data in development if available
+    if (process.env.NODE_ENV === 'development' && mockAnalytics) {
+      const { timeRange, startDate, endDate } = req.query;
+      const mockData = mockAnalytics.mockAnalyticsData(timeRange, startDate, endDate);
+      return res.json(mockData);
+    }
+
     const { timeRange, startDate, endDate } = req.query;
     
     // Calculate date range
@@ -1252,7 +1635,10 @@ router.get('/analytics', async (req, res) => {
       statusDistribution: Object.entries(statusDistribution).map(([status, count]) => ({ status, count }))
     };
 
-    res.json(analyticsData);
+    res.json({
+      success: true,
+      data: analyticsData
+    });
   } catch (error) {
     logger.error('Analytics error:', error);
     res.status(500).json({
@@ -1378,6 +1764,12 @@ function formatBytes(bytes, decimals = 2) {
   return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 }
 
+function groupMetricsByPeriod(metrics, period) {
+  // For now, just return the metrics as-is
+  // In the future, this could group metrics by time periods
+  return metrics;
+}
+
 function getActivityDescription(activity) {
   const { action, resource, details } = activity;
   
@@ -1403,6 +1795,103 @@ function getActivityDescription(activity) {
     default:
       return `${action.replace(/_/g, ' ')} on ${resource || 'system'}`;
   }
+}
+
+// Mock dashboard stats function
+function getMockDashboardStats() {
+  return {
+    assets: {
+      total: 45,
+      downloaded: 23,
+      processed: 18,
+      uploaded: 12
+    },
+    uploads: {
+      total: 28,
+      thisWeek: 6
+    },
+    system: {
+      cpu: 42.5,
+      memory: 67.8,
+      disk: 55.2,
+      processes: 156,
+      uptime: 86400 * 3 // 3 days
+    },
+    storage: {
+      downloads: {
+        fileCount: 23,
+        totalSize: 1024 * 1024 * 850, // ~850MB
+        sizeFormatted: '850 MB'
+      },
+      processed: {
+        fileCount: 18,
+        totalSize: 1024 * 1024 * 720, // ~720MB
+        sizeFormatted: '720 MB'
+      },
+      uploads: {
+        fileCount: 12,
+        totalSize: 1024 * 1024 * 345, // ~345MB
+        sizeFormatted: '345 MB'
+      }
+    },
+    recentActivity: [
+      {
+        id: 1,
+        type: 'signal_morphology',
+        status: 'completed',
+        assetName: 'ambient_track_01.mp3',
+        createdAt: new Date(Date.now() - 2 * 3600000) // 2 hours ago
+      },
+      {
+        id: 2,
+        type: 'harvest',
+        status: 'running',
+        assetName: 'podcast_episode_42.mp3',
+        createdAt: new Date(Date.now() - 3600000) // 1 hour ago
+      },
+      {
+        id: 3,
+        type: 'upload',
+        status: 'completed',
+        assetName: 'music_loop_synthwave.wav',
+        createdAt: new Date(Date.now() - 30 * 60000) // 30 minutes ago
+      },
+      {
+        id: 4,
+        type: 'semantic_enrichment',
+        status: 'pending',
+        assetName: 'voice_recording_demo.mp3',
+        createdAt: new Date(Date.now() - 15 * 60000) // 15 minutes ago
+      },
+      {
+        id: 5,
+        type: 'signal_morphology',
+        status: 'failed',
+        assetName: 'corrupted_file.mp3',
+        createdAt: new Date(Date.now() - 10 * 60000) // 10 minutes ago
+      }
+    ]
+  };
+}
+
+// Mock metrics history function
+function getMockMetricsHistory(limit = 50) {
+  const now = new Date();
+  const metrics = [];
+  
+  for (let i = limit - 1; i >= 0; i--) {
+    const timestamp = new Date(now.getTime() - (i * 5 * 60000)); // 5-minute intervals
+    metrics.push({
+      timestamp: timestamp.toISOString(),
+      cpuPercent: Math.random() * 30 + 35, // 35-65% CPU usage
+      memoryPercent: Math.random() * 20 + 60, // 60-80% memory usage
+      diskPercent: Math.random() * 10 + 50, // 50-60% disk usage
+      networkBytesIn: Math.floor(Math.random() * 1000000), // Random network bytes
+      networkBytesOut: Math.floor(Math.random() * 500000)
+    });
+  }
+  
+  return metrics;
 }
 
 module.exports = router;

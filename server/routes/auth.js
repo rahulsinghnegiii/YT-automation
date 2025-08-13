@@ -27,6 +27,42 @@ router.post('/login', loginLimiter, async (req, res) => {
       });
     }
 
+    // Mock authentication in development mode
+    if (process.env.NODE_ENV === 'development' && process.env.USE_MOCK_DATA === 'true') {
+      console.log('🔧 Using mock authentication mode');
+      
+      // Simple mock authentication - accept any credentials
+      const mockUser = {
+        id: 1,
+        username: username,
+        email: `${username}@example.com`,
+        role: 'admin',
+        lastLogin: new Date()
+      };
+      
+      // Generate mock JWT token
+      const mockToken = jwt.sign(
+        { 
+          userId: mockUser.id, 
+          username: mockUser.username, 
+          role: mockUser.role 
+        },
+        process.env.JWT_SECRET || 'mock-secret-key',
+        { expiresIn: '24h' }
+      );
+
+      logger.info(`Mock login successful for ${username} from ${req.ip}`);
+
+      return res.json({
+        success: true,
+        data: {
+          token: mockToken,
+          user: mockUser
+        },
+        mock: true // Indicate this is a mock response
+      });
+    }
+
     // Find user
     const user = await User.findOne({ where: { username, isActive: true } });
     
@@ -138,7 +174,26 @@ router.get('/verify', async (req, res) => {
       });
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'mock-secret-key');
+    
+    // Mock mode handling
+    if (process.env.NODE_ENV === 'development' && process.env.USE_MOCK_DATA === 'true') {
+      const mockUser = {
+        id: decoded.userId || 1,
+        username: decoded.username || 'admin',
+        email: decoded.username ? `${decoded.username}@example.com` : 'admin@example.com',
+        role: decoded.role || 'admin',
+        lastLogin: new Date(),
+        isActive: true
+      };
+      
+      return res.json({
+        success: true,
+        data: { user: mockUser },
+        mock: true
+      });
+    }
+    
     const user = await User.findByPk(decoded.userId, {
       attributes: ['id', 'username', 'email', 'role', 'lastLogin', 'isActive']
     });
@@ -176,7 +231,26 @@ router.get('/me', async (req, res) => {
       });
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'mock-secret-key');
+    
+    // Mock mode handling
+    if (process.env.NODE_ENV === 'development' && process.env.USE_MOCK_DATA === 'true') {
+      const mockUser = {
+        id: decoded.userId || 1,
+        username: decoded.username || 'admin',
+        email: decoded.username ? `${decoded.username}@example.com` : 'admin@example.com',
+        role: decoded.role || 'admin',
+        lastLogin: new Date(),
+        isActive: true
+      };
+      
+      return res.json({
+        success: true,
+        data: { user: mockUser },
+        mock: true
+      });
+    }
+    
     const user = await User.findByPk(decoded.userId, {
       attributes: ['id', 'username', 'email', 'role', 'lastLogin', 'isActive']
     });

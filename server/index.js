@@ -9,23 +9,90 @@ require('dotenv').config();
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server, {
-  cors: {
-    origin: process.env.NODE_ENV === 'production' ? false : ['http://localhost:3001'],
-    methods: ['GET', 'POST']
-  }
-});
+
+// Initialize Socket.IO only if enabled in environment
+let io = null;
+if (process.env.ENABLE_WEBSOCKETS !== 'false') {
+  const socketCorsOptions = {
+    origin: process.env.NODE_ENV === 'development' ? true : (process.env.ALLOWED_ORIGINS?.split(',') || []),
+    methods: ['GET', 'POST'],
+    credentials: true
+  };
+  
+  io = socketIo(server, {
+    cors: socketCorsOptions
+  });
+  console.log('✅ WebSocket (Socket.IO) enabled');
+} else {
+  console.log('ℹ️ WebSocket (Socket.IO) disabled via ENABLE_WEBSOCKETS=false');
+}
 
 const PORT = process.env.PORT || 3000;
 
-// Basic middleware
-app.use(cors({
-  origin: process.env.NODE_ENV === 'production' ? false : ['http://localhost:3001'],
-  credentials: true
-}));
+// CORS configuration for development
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    const allowedOrigins = [
+      'http://localhost:3000',
+      'http://localhost:3001', 
+      'http://localhost:5173',
+      'http://127.0.0.1:3000',
+      'http://127.0.0.1:3001',
+      'http://127.0.0.1:5173'
+    ];
+    
+    // In development, allow all localhost origins
+    if (process.env.NODE_ENV === 'development') {
+      // Allow any localhost or 127.0.0.1 origin
+      if (origin.includes('localhost') || origin.includes('127.0.0.1')) {
+        return callback(null, true);
+      }
+      // Also check against allowed origins
+      if (allowedOrigins.indexOf(origin) !== -1) {
+        return callback(null, true);
+      }
+    }
+    
+    // In production, only allow specific origins (configure as needed)
+    if (process.env.NODE_ENV === 'production') {
+      const productionOrigins = process.env.ALLOWED_ORIGINS?.split(',') || [];
+      if (productionOrigins.indexOf(origin) !== -1) {
+        return callback(null, true);
+      }
+      return callback(new Error('Not allowed by CORS'));
+    }
+    
+    // Default allow for development
+    callback(null, true);
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  exposedHeaders: ['Content-Length', 'X-Foo', 'X-Bar'],
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+app.use(cors(corsOptions));
+
+// Log CORS configuration for debugging
+console.log('🌐 CORS Configuration Applied (Updated):');
+console.log('- Development Mode:', process.env.NODE_ENV === 'development');
+console.log('- Allowed Methods: GET, POST, PUT, DELETE, OPTIONS');
+console.log('- Credentials Support: true');
+console.log('- Dynamic Origin Support: enabled for localhost/*');
+if (process.env.NODE_ENV === 'production') {
+  console.log('- Production Origins:', process.env.ALLOWED_ORIGINS?.split(',') || 'none configured');
+}
 
 app.use(express.json({ limit: '100mb' }));
 app.use(express.urlencoded({ extended: true }));
+
+// Add response headers middleware
+const responseHeaders = require('./middleware/responseHeaders');
+app.use(responseHeaders);
 
 // Serve static files
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
@@ -86,44 +153,39 @@ app.get('/health', (req, res) => {
   });
 });
 
-// 404 handler
-app.use('*', (req, res) => {
-  res.status(404).json({ 
-    success: false, 
-    error: 'Endpoint not found',
-    path: req.originalUrl,
-    available: ['/', '/health', '/auth', '/api', '/upload', '/system']
-  });
-});
+// Import centralized error handling
+const { errorHandler, notFoundHandler } = require('./middleware/errorHandler');
 
-// Global error handler
-app.use((err, req, res, next) => {
-  console.error('Server error:', err);
-  res.status(500).json({ 
-    success: false, 
-    error: process.env.NODE_ENV === 'production' ? 'Internal server error' : err.message 
-  });
-});
+// Apply error handling middleware
+app.use(notFoundHandler);
+app.use(errorHandler);
 
-// Socket.IO handling
-io.on('connection', (socket) => {
-  console.log(`Client connected: ${socket.id}`);
-  
-  socket.emit('welcome', { 
-    message: 'Connected to AI Music Uploader',
-    timestamp: new Date().toISOString(),
-    features: ['Real-time monitoring', 'Live updates', 'System metrics']
+// Socket.IO handling (only if enabled)
+if (io) {
+  io.on('connection', (socket) => {
+    console.log(`Client connected: ${socket.id}`);
+    
+    socket.emit('welcome', { 
+      message: 'Connected to AI Music Uploader',
+      timestamp: new Date().toISOString(),
+      features: ['Real-time monitoring', 'Live updates', 'System metrics']
+    });
+    
+    socket.on('disconnect', () => {
+      console.log(`Client disconnected: ${socket.id}`);
+    });
   });
-  
-  socket.on('disconnect', () => {
-    console.log(`Client disconnected: ${socket.id}`);
-  });
-});
+}
 
 // Server startup
 async function startServer() {
   try {
     console.log('🚀 Starting AI Music Uploader Server...');
+    
+    // Validate environment variables
+    const { validateOrExit } = require('./utils/envValidator');
+    const validation = validateOrExit({ strict: false });
+    console.log(''); // Add spacing
     
     // Try to initialize database
     try {
@@ -150,7 +212,7 @@ async function startServer() {
 ╠═══════════════════════════════════════════════════════════════╣
 ║ 🚀 Status: ONLINE                                           ║
 ║ 📡 Port: ${PORT.toString().padEnd(53)}║
-║ 🔐 Admin: ${(process.env.ADMIN_USERNAME + ' / ' + process.env.ADMIN_PASSWORD).padEnd(50)}║
+║ 🔐 Admin: ${(process.env.ADMIN_USERNAME + ' / ' + '*'.repeat(Math.min(process.env.ADMIN_PASSWORD?.length || 8, 12))).padEnd(50)}║
 ║ 📊 Dashboard: http://localhost:${PORT.toString().padEnd(38)}║
 ║ 🔗 Health: http://localhost:${PORT}/health${' '.repeat(26)}║
 ║                                                              ║

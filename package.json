@@ -9,12 +9,13 @@
     "server": "nodemon server/index.js",
     "client": "cd client && npm start",
     "build": "cd client && npm run build",
+    "test": "echo \"No tests specified\" && exit 0",
     "heroku-postbuild": "npm install --prefix client && npm run build --prefix client",
     "docker:build": "docker build -t ai-music-uploader:latest .",
-    "docker:start": "./deploy.sh start",
-    "docker:stop": "./deploy.sh stop",
-    "docker:logs": "./deploy.sh logs",
-    "docker:status": "./deploy.sh status"
+    "docker:start": "docker-compose -f docker-compose.yml up -d",
+    "docker:stop": "docker-compose -f docker-compose.yml down",
+    "docker:logs": "docker-compose -f docker-compose.yml logs -f",
+    "docker:status": "docker-compose -f docker-compose.yml ps"
   },
   "dependencies": {
     "axios": "^1.10.0",
@@ -32,6 +33,7 @@
     "node-cron": "^3.0.3",
     "node-telegram-bot-api": "^0.63.0",
     "nodemailer": "^6.9.7",
+    "oauth": "^0.10.0",
     "openai": "^4.20.1",
     "sequelize": "^6.35.0",
     "socket.io": "^4.7.4",

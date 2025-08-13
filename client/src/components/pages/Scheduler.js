@@ -22,7 +22,7 @@ import {
   Refresh,
 } from '@mui/icons-material';
 import { DataGrid } from '@mui/x-data-grid';
-import axios from 'axios';
+import api from '../../utils/api';
 import toast from 'react-hot-toast';
 
 const Scheduler = () => {
@@ -44,7 +44,7 @@ const Scheduler = () => {
   const fetchSchedulerStatus = async () => {
     console.log('📊 Fetching scheduler status...');
     try {
-      const response = await axios.get('/api/scheduler/status');
+      const response = await api.get('/api/scheduler/status');
       console.log('📊 Scheduler status response:', response.data);
       
       if (response.data.success) {
@@ -69,7 +69,7 @@ const Scheduler = () => {
   const fetchConfig = async () => {
     console.log('⚙️ Fetching scheduler config...');
     try {
-      const response = await axios.get('/api/scheduler/config');
+      const response = await api.get('/api/scheduler/config');
       console.log('⚙️ Config response:', response.data);
       
       if (response.data.success) {
@@ -95,7 +95,7 @@ const Scheduler = () => {
     console.log(`🔄 ${enabled ? 'Starting' : 'Stopping'} job:`, jobName);
     try {
       const action = enabled ? 'start' : 'stop';
-      const response = await axios.post(`/api/scheduler/jobs/${jobName}/${action}`);
+      const response = await api.post(`/api/scheduler/jobs/${jobName}/${action}`);
       console.log(`🔄 Job ${action} response:`, response.data);
       
       toast.success(`Job ${enabled ? 'started' : 'stopped'} successfully`);
@@ -114,7 +114,7 @@ const Scheduler = () => {
   const handleTriggerJob = async (jobName) => {
     console.log('⚡ Triggering job:', jobName);
     try {
-      const response = await axios.post(`/api/scheduler/jobs/${jobName}/trigger`);
+      const response = await api.post(`/api/scheduler/jobs/${jobName}/trigger`);
       console.log('⚡ Job trigger response:', response.data);
       
       toast.success('Job triggered successfully');
@@ -132,7 +132,7 @@ const Scheduler = () => {
 
   const handleSaveConfig = async () => {
     try {
-      const response = await axios.put('/api/scheduler/config', config);
+      const response = await api.put('/api/scheduler/config', config);
       if (response.data.success) {
         toast.success('Configuration saved successfully');
         setConfigDialog(false);

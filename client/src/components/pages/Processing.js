@@ -25,7 +25,6 @@ import {
   Settings,
 } from '@mui/icons-material';
 import { DataGrid } from '@mui/x-data-grid';
-import axios from 'axios';
 import api from '../../utils/api';
 import toast from 'react-hot-toast';
 
@@ -92,7 +91,7 @@ const Processing = () => {
 
   const handleJobAction = async (jobId, action) => {
     try {
-      await axios.post(`/api/processing/jobs/${jobId}/${action}`);
+      await api.post(`/api/processing/jobs/${jobId}/${action}`);
       toast.success(`Job ${action} successful`);
       fetchJobs();
     } catch (error) {
@@ -102,17 +101,18 @@ const Processing = () => {
 
   const handleDeleteJob = async (jobId) => {
     try {
-      await axios.delete(`/api/processing/jobs/${jobId}`);
+      await api.delete(`/api/processing/jobs/${jobId}`);
       toast.success('Job deleted successfully');
       fetchJobs();
     } catch (error) {
+      console.error('Delete job error:', error);
       toast.error('Failed to delete job');
     }
   };
 
   const handleCreateJob = async () => {
     try {
-      await axios.post('/api/processing/jobs', newJob);
+      await api.post('/api/processing/start', newJob);
       toast.success('Processing job created successfully');
       setCreateDialog(false);
       setNewJob({
@@ -122,6 +122,7 @@ const Processing = () => {
       });
       fetchJobs();
     } catch (error) {
+      console.error('Create job error:', error);
       toast.error('Failed to create processing job');
     }
   };

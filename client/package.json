@@ -22,14 +22,15 @@
     "socket.io-client": "^4.7.2"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-optional-chaining": "^7.21.0",
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.18.6",
+    "@babel/plugin-proposal-optional-chaining": "^7.21.0",
+    "cross-env": "^10.0.0",
     "customize-cra": "^1.0.0",
     "react-app-rewired": "^2.2.1"
   },
   "scripts": {
-    "start": "NODE_OPTIONS=--openssl-legacy-provider PORT=3001 GENERATE_SOURCEMAP=false react-app-rewired start",
-    "build": "NODE_OPTIONS=--openssl-legacy-provider GENERATE_SOURCEMAP=false react-app-rewired build",
+    "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider PORT=3001 GENERATE_SOURCEMAP=false react-app-rewired start",
+    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider GENERATE_SOURCEMAP=false react-app-rewired build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

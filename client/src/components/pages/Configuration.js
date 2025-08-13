@@ -33,6 +33,7 @@ import {
   HealthAndSafety as HealthIcon,
 } from '@mui/icons-material';
 import { toast } from 'react-hot-toast';
+import api from '../../utils/api';
 
 const Configuration = () => {
   const [config, setConfig] = useState(null);
@@ -65,15 +66,8 @@ const Configuration = () => {
 
   const fetchConfig = async () => {
     try {
-      const response = await fetch('/api/system/config', {
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-      });
-
-      if (!response.ok) throw new Error('Failed to fetch configuration');
-
-      const data = await response.json();
+      const response = await api.get('/api/system/config');
+      const data = response.data;
       setConfig(data.data);
       setFormData({
         scheduler: data.data.scheduler || {},
@@ -90,16 +84,8 @@ const Configuration = () => {
 
   const fetchHealthStatus = async () => {
     try {
-      const response = await fetch('/api/system/health', {
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-      });
-
-      if (!response.ok) throw new Error('Failed to fetch health status');
-
-      const data = await response.json();
-      setHealthStatus(data.data);
+      const response = await api.get('/api/system/health');
+      setHealthStatus(response.data.data);
     } catch (error) {
       console.error('Error fetching health status:', error);
     }
@@ -108,17 +94,7 @@ const Configuration = () => {
   const saveConfig = async () => {
     setSaving(true);
     try {
-      const response = await fetch('/api/system/config', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        },
-        body: JSON.stringify(formData)
-      });
-
-      if (!response.ok) throw new Error('Failed to save configuration');
-
+      await api.put('/api/system/config', formData);
       toast.success('Configuration saved successfully');
       fetchConfig();
     } catch (error) {
@@ -131,17 +107,8 @@ const Configuration = () => {
 
   const performMaintenance = async (action) => {
     try {
-      const response = await fetch(`/api/system/maintenance/${action}`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-      });
-
-      if (!response.ok) throw new Error(`Failed to execute ${action}`);
-
-      const data = await response.json();
-      toast.success(data.message);
+      const response = await api.post(`/api/system/maintenance/${action}`);
+      toast.success(response.data.message);
       setMaintenanceDialog(false);
       
       // Refresh health status after maintenance

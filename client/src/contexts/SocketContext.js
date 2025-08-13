@@ -17,14 +17,27 @@ export const SocketProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
   const [connected, setConnected] = useState(false);
   const [metrics, setMetrics] = useState(null);
+  const [websocketsDisabled, setWebsocketsDisabled] = useState(false);
   const { isAuthenticated, user } = useAuth();
 
   useEffect(() => {
+    // Check if websockets are disabled in development
+    const enableWebsockets = process.env.REACT_APP_ENABLE_WEBSOCKETS !== 'false';
+    
+    if (!enableWebsockets) {
+      console.log('🔒 WebSockets disabled in development mode');
+      setWebsocketsDisabled(true);
+      return;
+    }
+
     if (isAuthenticated && user) {
+      console.log('🔗 Attempting to connect to WebSocket server...');
       const newSocket = io('http://localhost:3000', {
         auth: {
           token: localStorage.getItem('token'),
         },
+        timeout: 5000, // 5 second connection timeout
+        transports: ['websocket', 'polling']
       });
 
       newSocket.on('connect', () => {

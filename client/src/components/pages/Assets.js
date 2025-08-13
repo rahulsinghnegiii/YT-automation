@@ -59,37 +59,56 @@ const Assets = () => {
   };
 
   const handleDelete = async (assetIds) => {
+    console.log('🗑️ Delete action triggered:', { assetIds, type: typeof assetIds });
     try {
       if (Array.isArray(assetIds)) {
+        console.log('🗑️ Deleting multiple assets:', assetIds);
         await Promise.all(assetIds.map(id => api.delete(`/api/assets/${id}`)));
       } else {
-        await api.delete(`/api/assets/${assetIds}`);
+        console.log('🗑️ Deleting single asset:', assetIds);
+        const response = await api.delete(`/api/assets/${assetIds}`);
+        console.log('🗑️ Delete response:', response.data);
       }
       toast.success('Asset(s) deleted successfully');
       fetchAssets();
       setSelectedAssets([]);
       setDeleteDialog(false);
     } catch (error) {
-      toast.error('Failed to delete asset(s)');
+      console.error('❌ Delete error:', error);
+      const message = error.response?.data?.error || error.message || 'Failed to delete asset(s)';
+      toast.error(message);
     }
   };
 
   const handleDownload = async (asset) => {
+    console.log('💾 Download action triggered:', asset);
     try {
+      console.log('💾 Making download request for asset:', asset.id);
       const response = await api.get(`/api/assets/${asset.id}/download`, {
         responseType: 'blob',
+      });
+      
+      console.log('💾 Download response received:', {
+        status: response.status,
+        contentType: response.headers['content-type'],
+        size: response.data.size
       });
       
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement('a');
       link.href = url;
-      link.setAttribute('download', asset.filename);
+      link.setAttribute('download', asset.filename || `asset-${asset.id}`);
       document.body.appendChild(link);
       link.click();
       link.remove();
       window.URL.revokeObjectURL(url);
+      
+      console.log('💾 Download completed successfully');
+      toast.success(`Downloaded: ${asset.filename || `Asset ${asset.id}`}`);
     } catch (error) {
-      toast.error('Failed to download asset');
+      console.error('❌ Download error:', error);
+      const message = error.response?.data?.error || error.message || 'Failed to download asset';
+      toast.error(message);
     }
   };
 
@@ -201,31 +220,64 @@ const Assets = () => {
       width: 200,
       sortable: false,
       renderCell: (params) => (
-        <Box>
+        <Box display="flex" gap={0.5}>
           <IconButton
             size="small"
-            onClick={() => handleDownload(params.row)}
+            onClick={(e) => {
+              console.log('💾 Download button clicked for asset:', params.row.id);
+              e.stopPropagation();
+              e.preventDefault();
+              handleDownload(params.row);
+            }}
             title="Download"
+            sx={{ 
+              color: 'primary.main',
+              '&:hover': { 
+                backgroundColor: 'primary.light',
+                color: 'primary.contrastText'
+              }
+            }}
           >
-            <Download />
+            <Download fontSize="small" />
           </IconButton>
           <IconButton
             size="small"
-            onClick={() => {
+            onClick={(e) => {
+              console.log('✏️ Edit button clicked for asset:', params.row.id);
+              e.stopPropagation();
+              e.preventDefault();
               setEditAsset(params.row);
               setEditDialog(true);
             }}
             title="Edit"
+            sx={{ 
+              color: 'secondary.main',
+              '&:hover': { 
+                backgroundColor: 'secondary.light',
+                color: 'secondary.contrastText'
+              }
+            }}
           >
-            <Edit />
+            <Edit fontSize="small" />
           </IconButton>
           <IconButton
             size="small"
-            onClick={() => handleDelete(params.row.id)}
+            onClick={(e) => {
+              console.log('🗑️ Delete button clicked for asset:', params.row.id);
+              e.stopPropagation();
+              e.preventDefault();
+              handleDelete(params.row.id);
+            }}
             title="Delete"
-            color="error"
+            sx={{ 
+              color: 'error.main',
+              '&:hover': { 
+                backgroundColor: 'error.light',
+                color: 'error.contrastText'
+              }
+            }}
           >
-            <Delete />
+            <Delete fontSize="small" />
           </IconButton>
         </Box>
       ),

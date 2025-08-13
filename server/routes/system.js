@@ -215,6 +215,24 @@ router.post('/maintenance/:action', async (req, res) => {
 
 // System logs
 router.get('/logs', async (req, res) => {
+  const isDevelopment = process.env.NODE_ENV === 'development';
+  const useMockData = process.env.USE_MOCK_DATA === 'true';
+
+  // Use mock data in development
+  if (isDevelopment || useMockData) {
+    try {
+      const { level = 'info', limit = 100 } = req.query;
+      const mockLogs = getMockSystemLogs(level, parseInt(limit));
+      return res.json({
+        success: true,
+        data: mockLogs
+      });
+    } catch (error) {
+      logger.error('[/api/system/logs] Mock data failed:', error);
+      return res.status(500).json({ error: 'Mock data load failed' });
+    }
+  }
+
   try {
     const { level = 'info', limit = 100, since } = req.query;
     const fs = require('fs').promises;
@@ -360,6 +378,79 @@ async function cleanupOldLogs() {
   } catch (error) {
     throw new Error(`Log cleanup failed: ${error.message}`);
   }
+}
+
+// Mock system logs function
+function getMockSystemLogs(level = 'info', limit = 100) {
+  const levels = ['error', 'warn', 'info', 'verbose', 'debug'];
+  const messages = {
+    error: [
+      'Database connection failed',
+      'Failed to process asset #123',
+      'YouTube upload error: quota exceeded',
+      'Invalid API key provided',
+      'File not found: /uploads/missing.mp3'
+    ],
+    warn: [
+      'High memory usage detected: 85%',
+      'API rate limit approaching',
+      'Disk space low: 90% used',
+      'Scheduler job delayed by 5 minutes',
+      'External service timeout'
+    ],
+    info: [
+      'Server started successfully',
+      'Asset harvested from YouTube',
+      'Processing job completed',
+      'User logged in successfully', 
+      'Database backup completed',
+      'Scheduler job executed',
+      'System health check passed',
+      'File uploaded to YouTube',
+      'Configuration updated',
+      'Maintenance task completed'
+    ],
+    verbose: [
+      'HTTP Request: GET /api/assets',
+      'Database query executed in 45ms',
+      'Cache hit for key: user_123',
+      'WebSocket connection established',
+      'File system access: /uploads/'
+    ],
+    debug: [
+      'Function call: processAudioFile()',
+      'Variable state: processing=true',
+      'Memory allocation: 2.5MB',
+      'Network request: 200ms latency',
+      'Thread pool utilization: 67%'
+    ]
+  };
+
+  const logs = [];
+  const now = new Date();
+  
+  for (let i = 0; i < limit; i++) {
+    const timestamp = new Date(now.getTime() - (i * Math.random() * 60000)); // Random times within last hour
+    // Handle empty string or 'all' as showing all levels
+    const logLevel = (!level || level === '' || level === 'all') ? levels[Math.floor(Math.random() * levels.length)] : level;
+    const levelMessages = messages[logLevel] || messages.info;
+    const message = levelMessages[Math.floor(Math.random() * levelMessages.length)];
+    
+    logs.unshift({
+      timestamp: timestamp.toISOString(),
+      level: logLevel,
+      message: message,
+      service: 'ai-music-uploader',
+      pid: Math.floor(Math.random() * 10000) + 1000
+    });
+  }
+  
+  return {
+    logs: logs.slice(0, limit),
+    total: limit,
+    level: level || 'all',
+    file: 'mock-data.log'
+  };
 }
 
 module.exports = router;

@@ -292,31 +292,36 @@ async function initializeRealTimeMonitoring(io) {
   const monitor = new SystemMonitor(io);
   await monitor.startMonitoring();
   
-  // Handle WebSocket connections
-  io.on('connection', (socket) => {
-    logger.info(`📡 Client connected: ${socket.id}`);
-    
-    // Send current metrics immediately
-    socket.emit('system-metrics', {
-      timestamp: new Date().toISOString(),
-      metrics: monitor.getCurrentMetrics()
-    });
+  // Handle WebSocket connections only if io is available
+  if (io && typeof io.on === 'function') {
+    io.on('connection', (socket) => {
+      logger.info(`📡 Client connected: ${socket.id}`);
+      
+      // Send current metrics immediately
+      socket.emit('system-metrics', {
+        timestamp: new Date().toISOString(),
+        metrics: monitor.getCurrentMetrics()
+      });
 
-    socket.on('request-system-info', async () => {
-      const systemInfo = await monitor.getSystemInfo();
-      socket.emit('system-info', systemInfo);
-    });
+      socket.on('request-system-info', async () => {
+        const systemInfo = await monitor.getSystemInfo();
+        socket.emit('system-info', systemInfo);
+      });
 
-    socket.on('request-historical-metrics', async (data) => {
-      const hours = data?.hours || 24;
-      const metrics = await monitor.getHistoricalMetrics(hours);
-      socket.emit('historical-metrics', metrics);
-    });
+      socket.on('request-historical-metrics', async (data) => {
+        const hours = data?.hours || 24;
+        const metrics = await monitor.getHistoricalMetrics(hours);
+        socket.emit('historical-metrics', metrics);
+      });
 
-    socket.on('disconnect', () => {
-      logger.info(`📡 Client disconnected: ${socket.id}`);
+      socket.on('disconnect', () => {
+        logger.info(`📡 Client disconnected: ${socket.id}`);
+      });
     });
-  });
+    logger.info('📡 WebSocket event handlers attached');
+  } else {
+    logger.info('ℹ️ WebSocket disabled - monitoring will run without real-time updates');
+  }
 
   return monitor;
 }
