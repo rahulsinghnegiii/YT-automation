@@ -32,7 +32,7 @@ export const SocketProvider = ({ children }) => {
 
     if (isAuthenticated && user) {
       console.log('🔗 Attempting to connect to WebSocket server...');
-      const newSocket = io('http://localhost:3000', {
+      const newSocket = io('http://168.119.110.41:3000', {
         auth: {
           token: localStorage.getItem('token'),
         },

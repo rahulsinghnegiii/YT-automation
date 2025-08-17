@@ -108,7 +108,7 @@ const Login = () => {
           </Box>
           
           <Typography variant="body2" color="text.secondary" align="center">
-            Default credentials: admin / admin123
+            Default credentials: admin / SecureAdminPassword2024!
           </Typography>
         </Paper>
       </Container>

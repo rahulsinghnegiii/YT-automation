@@ -4,10 +4,10 @@ import axios from 'axios';
 const API_URL = 
   process.env.REACT_APP_API_URL || 
   process.env.REACT_APP_API_BASE_URL ||
-  'http://localhost:3000';
+  'http://168.119.110.41:3000';
 
 const FALLBACK_URLS = [
-  'http://localhost:3000',
+  'http://168.119.110.41:3000',
   'http://127.0.0.1:3000',
   'http://localhost:8080',
   'http://127.0.0.1:8080'

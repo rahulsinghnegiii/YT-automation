@@ -65,8 +65,10 @@ export const AuthProvider = ({ children }) => {
     
     // Try direct fetch first (for better CORS control)
     try {
+      // Get API URL from environment or default
+      const API_BASE_URL = process.env.REACT_APP_API_URL || process.env.REACT_APP_API_BASE_URL || 'http://168.119.110.41:3000';
       console.log('🔐 Trying direct fetch to backend...');
-      const response = await fetch('http://localhost:3000/auth/login', {
+      const response = await fetch(`${API_BASE_URL}/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
